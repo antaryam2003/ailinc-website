@@ -70,9 +70,11 @@ jobs.webp             resume.webp           live-sessions.webp
 community.webp
 ```
 
-`dashboard-full.webp` is the full-height dashboard — it is what scrolls inside
-the hero window. To refresh any of them, recapture at 1440×900 @2× and re-export
-to WebP at the same width.
+`dashboard-full.webp` is the full-height dashboard — it is what pans inside the
+hero window as the page scrolls. Note that the app sidebar is `position: fixed`,
+so a full-page capture paints it only once and leaves white below; the shipped
+file has that column filled back in (see `scratchpad` fix-sidebar step). If you
+recapture it, repeat that repair or the left column will go blank on scroll.
 
 ---
 
@@ -87,7 +89,7 @@ back to static grids and a plain swipe carousel.
 | Cursor-tracked light       | hero backdrop        | spring-damped radial gradient             |
 | Magnetic buttons           | all primary CTAs     | `Magnetic` — spring translate to cursor   |
 | 3D scroll tilt             | hero dashboard       | `rotateX` 26°→0 driven by scroll          |
-| Scroll-inside window       | hero                 | real full-height dashboard, `overflow-y`  |
+| Self-panning dashboard     | hero                 | page scroll drives translateY on the tall capture; no nested scrollbar |
 | Drifting mesh blobs        | most sections        | CSS `drift-a/b/c` keyframes               |
 | Pinned vertical reel       | The Problem          | 560vh track → continuous index MotionValue |
 | Split-door reveal          | Problem → Solution   | panel halves part from the centre, solution emerges behind |

@@ -1,8 +1,15 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useMotionValue, useScroll, useSpring, useTransform } from "motion/react";
-import { useEffect, useRef, useState } from "react";
+import {
+  motion,
+  useMotionValue,
+  useMotionValueEvent,
+  useScroll,
+  useSpring,
+  useTransform,
+} from "motion/react";
+import { useEffect, useRef } from "react";
 import { AppWindow } from "@/components/ui/AppWindow";
 import { Button, WordReveal } from "@/components/ui/primitives";
 import { brand, hero } from "@/content/site";
@@ -11,8 +18,8 @@ import { asset } from "@/lib/site";
 export default function Hero() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const windowRef = useRef<HTMLDivElement>(null);
-  const scrollerRef = useRef<HTMLDivElement>(null);
-  const [hintVisible, setHintVisible] = useState(true);
+  const viewportRef = useRef<HTMLDivElement>(null);
+  const imageRef = useRef<HTMLDivElement>(null);
 
   /* -- scroll-linked 3D reveal of the dashboard window ------------------- */
   const { scrollYProgress } = useScroll({
@@ -27,6 +34,52 @@ export default function Hero() {
   const rotateX = useTransform(eased, [0, 1], [26, 0]);
   const scale = useTransform(eased, [0, 1], [0.86, 1]);
   const translateY = useTransform(eased, [0, 1], [60, 0]);
+
+  /* -- the dashboard pans itself as the page scrolls ---------------------- */
+  // The tall screenshot is taller than its frame; page scroll drives how far it
+  // has travelled, so the visitor never has to find a second scrollbar.
+  // Anchored to the hero section, not the window: "start start" means progress
+  // is exactly 0 while the section top is still at or below the viewport top —
+  // i.e. on first paint, at any viewport height. Anchoring to the window itself
+  // left it pre-scrolled on load, cropping the top of the briefing card.
+  const { scrollYProgress: panProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"],
+  });
+  const panEased = useSpring(panProgress, {
+    stiffness: 80,
+    damping: 30,
+    restDelta: 0.0005,
+  });
+
+  // Travel distance is measured rather than assumed: the image is ~1.96x as
+  // tall as it is wide, so the overflow differs hugely between phone and
+  // desktop. A ref keeps the latest value available to the subscription below.
+  const panY = useMotionValue(0);
+  const maxPan = useRef(0);
+
+  useEffect(() => {
+    const measure = () => {
+      const frame = viewportRef.current;
+      const img = imageRef.current;
+      if (!frame || !img) return;
+      maxPan.current = Math.max(0, img.offsetHeight - frame.clientHeight);
+      panY.set(-panEased.get() * maxPan.current);
+    };
+    measure();
+    window.addEventListener("resize", measure);
+    const ro = new ResizeObserver(measure);
+    if (imageRef.current) ro.observe(imageRef.current);
+    if (viewportRef.current) ro.observe(viewportRef.current);
+    return () => {
+      window.removeEventListener("resize", measure);
+      ro.disconnect();
+    };
+  }, [panY, panEased]);
+
+  useMotionValueEvent(panEased, "change", (v) => {
+    panY.set(-v * maxPan.current);
+  });
 
   /* -- cursor-tracking light on the backdrop ----------------------------- */
   const px = useMotionValue(50);
@@ -174,41 +227,27 @@ export default function Hero() {
             }}
           >
             <AppWindow>
-              {/* The real dashboard, full height, scrollable inside the frame. */}
+              {/* The real dashboard, full height. It pans itself as the page
+                  scrolls — no nested scrollbar for the visitor to discover. */}
               <div
-                ref={scrollerRef}
-                onScroll={() => setHintVisible(false)}
-                className="relative h-[clamp(20rem,52vh,34rem)] overflow-y-auto overscroll-contain [scrollbar-width:thin]"
+                ref={viewportRef}
+                className="relative h-[clamp(20rem,52vh,34rem)] overflow-hidden"
               >
-                <Image
-                  src={asset("/platform/dashboard-full.webp")}
-                  alt="The AI Linc student dashboard — AI briefing, today's goal, skill profile and course readiness"
-                  width={1800}
-                  height={3525}
-                  priority
-                  className="w-full"
-                />
+                <motion.div
+                  ref={imageRef}
+                  style={{ y: panY }}
+                  className="will-change-transform"
+                >
+                  <Image
+                    src={asset("/platform/dashboard-full.webp")}
+                    alt="The AI Linc student dashboard — AI briefing, today's goal, skill profile and course readiness"
+                    width={1800}
+                    height={3525}
+                    priority
+                    className="w-full"
+                  />
+                </motion.div>
               </div>
-
-              {/* scroll affordance */}
-              <motion.div
-                aria-hidden
-                initial={{ opacity: 0, y: 6 }}
-                animate={{ opacity: hintVisible ? 1 : 0, y: 0 }}
-                transition={{ duration: 0.5, delay: 1.4 }}
-                className="pointer-events-none absolute inset-x-0 bottom-0 flex justify-center bg-gradient-to-t from-white via-white/70 to-transparent pt-10 pb-3"
-              >
-                <span className="flex items-center gap-2 rounded-full border border-line bg-surface px-3.5 py-1.5 text-[0.75rem] font-medium text-body shadow-sm">
-                  <motion.span
-                    animate={{ y: [0, 3, 0] }}
-                    transition={{ duration: 1.6, repeat: Infinity }}
-                    className="text-violet"
-                  >
-                    ↕
-                  </motion.span>
-                  Scroll inside to explore the real dashboard
-                </span>
-              </motion.div>
             </AppWindow>
           </motion.div>
 
