@@ -5,6 +5,9 @@ export const alt = `${brand.name} — Don't just learn AI. Build with it.`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
+// Required so the card prerenders under `output: "export"`.
+export const dynamic = "force-static";
+
 /** Social share card, rendered at build time. Flat colour, no network fetches. */
 export default function OpengraphImage() {
   return new ImageResponse(

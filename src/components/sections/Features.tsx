@@ -14,6 +14,7 @@ import { AppWindow } from "@/components/ui/AppWindow";
 import { Eyebrow, TodoNote, WordReveal } from "@/components/ui/primitives";
 import { LogoMark } from "@/components/ui/Logo";
 import { features } from "@/content/site";
+import { asset } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 const SLIDES = features.slides;
@@ -218,7 +219,7 @@ function Slide({ slide }: { slide: (typeof SLIDES)[number] }) {
       <AppWindow compact>
         {slide.image ? (
           <Image
-            src={slide.image}
+            src={asset(slide.image)}
             alt={`${slide.title} — the AI Linc platform`}
             width={2400}
             height={1500}

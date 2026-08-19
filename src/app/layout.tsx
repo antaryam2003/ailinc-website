@@ -5,6 +5,7 @@ import SmoothScroll from "@/components/layout/SmoothScroll";
 import Nav from "@/components/layout/Nav";
 import Footer from "@/components/layout/Footer";
 import { brand } from "@/content/site";
+import { SITE_URL } from "@/lib/site";
 
 /**
  * Satoshi is the typeface the AI Linc platform itself uses. Self-hosted from
@@ -24,7 +25,7 @@ const satoshi = localFont({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://ailinc.com"),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: `${brand.name} — Don't just learn AI. Build with it.`,
     template: `%s · ${brand.name}`,

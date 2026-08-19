@@ -53,6 +53,7 @@ export default function Footer() {
                       ) : (
                         <Link
                           href={l.href}
+                          prefetch={false}
                           className="text-[0.8125rem] text-white/55 transition-colors hover:text-white"
                         >
                           {l.label}
@@ -77,6 +78,7 @@ export default function Footer() {
               <Link
                 key={l.label}
                 href={l.href}
+                prefetch={false}
                 className="text-xs text-white/40 transition-colors hover:text-white/70"
               >
                 {l.label}

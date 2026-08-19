@@ -1,16 +1,12 @@
 import type { MetadataRoute } from "next";
+import { SITE_URL } from "@/lib/site";
 
-const BASE = "https://ailinc.com";
+// Required so these routes prerender under `output: "export"`.
+export const dynamic = "force-static";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
   return [
-    { url: BASE, lastModified: now, changeFrequency: "weekly", priority: 1 },
-    {
-      url: `${BASE}/institutions`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
+    { url: SITE_URL, lastModified: now, changeFrequency: "weekly", priority: 1 },
   ];
 }

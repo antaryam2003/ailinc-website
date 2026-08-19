@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useRef, useState } from "react";
 import { Reveal, TodoNote, WordReveal } from "@/components/ui/primitives";
 import { walkthrough } from "@/content/site";
+import { asset } from "@/lib/site";
 
 export default function Walkthrough() {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -65,8 +66,8 @@ export default function Walkthrough() {
                 {walkthrough.videoSrc ? (
                   <video
                     ref={videoRef}
-                    src={walkthrough.videoSrc}
-                    poster={walkthrough.poster ?? undefined}
+                    src={asset(walkthrough.videoSrc)}
+                    poster={asset(walkthrough.poster) ?? undefined}
                     controls={playing}
                     playsInline
                     preload="metadata"
@@ -74,7 +75,7 @@ export default function Walkthrough() {
                   />
                 ) : (
                   <Image
-                    src={walkthrough.poster}
+                    src={asset(walkthrough.poster)}
                     alt="The AI Linc platform dashboard"
                     fill
                     className="object-cover object-top"
@@ -170,7 +171,7 @@ export default function Walkthrough() {
               <div className="mt-7 flex items-center gap-3.5 border-t border-white/10 pt-6">
                 {f.photo ? (
                   <Image
-                    src={f.photo}
+                    src={asset(f.photo)}
                     alt={f.name}
                     width={48}
                     height={48}

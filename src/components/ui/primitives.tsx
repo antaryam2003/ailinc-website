@@ -371,7 +371,7 @@ export function Button({
       {inner}
     </a>
   ) : (
-    <Link href={href} className={cn(base, styles, className)}>
+    <Link href={href} prefetch={false} className={cn(base, styles, className)}>
       {inner}
     </Link>
   );

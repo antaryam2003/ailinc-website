@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from "react";
 import { AppWindow } from "@/components/ui/AppWindow";
 import { Button, WordReveal } from "@/components/ui/primitives";
 import { brand, hero } from "@/content/site";
+import { asset } from "@/lib/site";
 
 export default function Hero() {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -180,7 +181,7 @@ export default function Hero() {
                 className="relative h-[clamp(20rem,52vh,34rem)] overflow-y-auto overscroll-contain [scrollbar-width:thin]"
               >
                 <Image
-                  src="/platform/dashboard-full.webp"
+                  src={asset("/platform/dashboard-full.webp")}
                   alt="The AI Linc student dashboard — AI briefing, today's goal, skill profile and course readiness"
                   width={1800}
                   height={3525}

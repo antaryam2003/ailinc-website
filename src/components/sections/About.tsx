@@ -6,6 +6,7 @@ import { useRef } from "react";
 import { Eyebrow, Reveal, Section, WordReveal } from "@/components/ui/primitives";
 import { AppWindow } from "@/components/ui/AppWindow";
 import { about } from "@/content/site";
+import { asset } from "@/lib/site";
 
 export default function About() {
   const ref = useRef<HTMLDivElement>(null);
@@ -52,7 +53,7 @@ export default function About() {
           <motion.div style={{ y, rotate }}>
             <AppWindow compact>
               <Image
-                src="/platform/courses.webp"
+                src={asset("/platform/courses.webp")}
                 alt="AI Linc courses — AI-personalised courses that adapt to your level in real time"
                 width={2400}
                 height={1500}
