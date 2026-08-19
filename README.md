@@ -89,7 +89,8 @@ back to static grids and a plain swipe carousel.
 | 3D scroll tilt             | hero dashboard       | `rotateX` 26°→0 driven by scroll          |
 | Scroll-inside window       | hero                 | real full-height dashboard, `overflow-y`  |
 | Drifting mesh blobs        | most sections        | CSS `drift-a/b/c` keyframes               |
-| Pinned vertical reel       | The Problem          | 420vh track → continuous index MotionValue |
+| Pinned vertical reel       | The Problem          | 560vh track → continuous index MotionValue |
+| Split-door reveal          | Problem → Solution   | panel halves part from the centre, solution emerges behind |
 | Rolling numeral            | The Problem          | translateY on a stacked digit column       |
 | Pinned horizontal gallery  | Features             | scroll → `translateX`, distance measured from DOM |
 | Cursor spotlight cards     | Why AI Linc          | `SpotlightCard` — radial glow at pointer   |
