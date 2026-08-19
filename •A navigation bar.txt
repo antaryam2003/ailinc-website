@@ -1,0 +1,20 @@
+•A navigation bar 
+•In the middle there will be a heading may be like -> THE FUTURE OF LEARNING AI IS HERE Don't just learn AI. Build with it. And a small line after it “Learn, build and master real-world AI through hands-on projects, expert guidance and an AI-powered learning platform.”
+•After that there will be 2 buttons [Explore Programs] [Experience AI Linc →]
+•Then there will be a screen shot or may be webpage (not a button but in a block in which we can scroll) of the dashboard only.
+•A line saying something like “Built for learners who want to go beyond theory”. The some data points like 10K+ Learners | 500+ Projects | 50+ Mentors | X+ Institutions. Just below this we can but the logos or name of the companies we are partnered with.
+•We can put a sliding vertical window saying the problems of the people like :
+1.Too Much Content
+  Thousands of tutorials. No clear path.
+2.Too Much Theory
+  You understand concepts but can't build anything.
+3.Too Many Tools
+  New AI tools every week. Where do you start?
+4.No Real Portfolio
+  Finishing courses doesn't necessarily prove what you can build.
+Then comes the solution like That's why we built AI Linc.
+•Then a heading like “From learning to building.” Followed by a horizontal sliding window showing our features with images taken from the website.
+•Then we can put the platform video explaining the features in detail. The video should be on left side and on right side there can be a Founder’s note.
+•FAQ
+•Maybe a finishing line after this like “Your AI journey starts here.”
+•At the end will be a footer with logo, platform, about, resources, contact .
