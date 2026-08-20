@@ -79,6 +79,25 @@ wording — implying they hit the real engine would misrepresent the product.
 
 ---
 
+## The hero animation
+
+`public/platform/hero/f001..f040.webp` is a recording of the real dashboard,
+split into 40 frames and drawn to a canvas by `ui/ScrollSequence.tsx`. Scroll
+position selects the frame, so the clip advances as the visitor scrolls.
+
+It is deliberately **not** a GIF and **not** a `<video>`:
+- a GIF runs on its own timeline and cannot be seeked, so scroll could not
+  drive it at all;
+- seeking a video on every scroll frame stutters badly on iOS Safari.
+
+To replace it, re-encode a new recording with
+`ffmpeg -i clip.mp4 -vf "fps=5,scale=1000:-2" -c:v libwebp -q:v 62 f%03d.webp`
+and keep the frame count in sync with the `count` prop in `Hero.tsx`.
+Frame 1 loads first and alone so the hero paints immediately; the remaining 39
+stream in four at a time behind it.
+
+---
+
 ## Recording the feature clips
 
 `public/platform/clips/*.mp4` are silent loops recorded from the live demo with
@@ -128,7 +147,7 @@ back to static grids and a plain swipe carousel.
 | Cursor-tracked light       | hero backdrop        | spring-damped radial gradient             |
 | Magnetic buttons           | all primary CTAs     | `Magnetic` — spring translate to cursor   |
 | 3D scroll tilt             | hero dashboard       | `rotateX` 26°→0 driven by scroll          |
-| Self-panning dashboard     | hero                 | page scroll drives translateY on the tall capture; no nested scrollbar |
+| Scroll-scrubbed dashboard  | hero                 | 40-frame WebP sequence drawn to canvas; scroll position selects the frame |
 | Drifting mesh blobs        | most sections        | CSS `drift-a/b/c` keyframes               |
 | Pinned vertical reel       | The Problem          | 560vh track → continuous index MotionValue |
 | Split-door reveal          | Problem → Solution   | panel halves part from the centre, solution emerges behind |

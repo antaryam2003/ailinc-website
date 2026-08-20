@@ -3,7 +3,8 @@
 import { motion, useMotionValue, useScroll, useSpring, useTransform } from "motion/react";
 import { useEffect, useRef } from "react";
 import Link from "next/link";
-import LevelDemo from "@/components/sections/LevelDemo";
+import { AppWindow } from "@/components/ui/AppWindow";
+import { ScrollSequence } from "@/components/ui/ScrollSequence";
 import { Button, WordReveal } from "@/components/ui/primitives";
 import { hero } from "@/content/site";
 
@@ -24,6 +25,20 @@ export default function Hero() {
   const rotateX = useTransform(eased, [0, 1], [20, 0]);
   const scale = useTransform(eased, [0, 1], [0.9, 1]);
   const lift = useTransform(eased, [0, 1], [50, 0]);
+
+  /* -- the dashboard recording, scrubbed by scroll ------------------------ */
+  // Anchored to the section with "start start": progress is exactly 0 while the
+  // section top is still at or below the viewport top, i.e. on first paint at
+  // any viewport height.
+  const { scrollYProgress: seqProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"],
+  });
+  const seqEased = useSpring(seqProgress, {
+    stiffness: 90,
+    damping: 30,
+    restDelta: 0.0005,
+  });
 
   /* -- cursor-tracking light on the backdrop ------------------------------ */
   const px = useMotionValue(50);
@@ -171,7 +186,16 @@ export default function Hero() {
               transformOrigin: "center top",
             }}
           >
-            <LevelDemo />
+            <AppWindow>
+              <ScrollSequence
+                progress={seqEased}
+                count={40}
+                path="/platform/hero"
+                width={1000}
+                height={572}
+                alt="The AI Linc student dashboard — AI briefing, today's goal, skill profile and course readiness"
+              />
+            </AppWindow>
           </motion.div>
         </div>
       </div>
