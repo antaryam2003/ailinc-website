@@ -74,7 +74,7 @@ export default function Features() {
   /* ---- reduced motion: plain horizontal swipe carousel ---- */
   if (reduced) {
     return (
-      <section id="features" className="px-5 py-24 sm:px-8">
+      <section id="platform" className="px-5 py-24 sm:px-8">
         <div className="mx-auto w-full max-w-[78rem]">
           <Header />
         </div>
@@ -91,7 +91,7 @@ export default function Features() {
 
   return (
     <section
-      id="features"
+      id="platform"
       ref={sectionRef}
       className="relative"
       // Enough vertical room for every slide to get a comfortable dwell.

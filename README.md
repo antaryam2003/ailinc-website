@@ -40,11 +40,32 @@ follows.
 
 ## Page flow
 
-`src/app/page.tsx` composes the sections in this order. It is a narrative;
-reordering breaks it.
+`src/app/page.tsx`. The spine of the whole site is one sentence:
+**AI learns you → adapts to you → teaches you → lets you create.**
+Copy that drifts back to "we offer AI courses" is off-positioning.
 
-| #   | Section       | File                              |
-| --- | ------------- | --------------------------------- |
+| #   | Section                          | File                        |
+| --- | -------------------------------- | --------------------------- |
+| 1   | Hero + interactive level demo    | `sections/Hero.tsx` + `LevelDemo.tsx` |
+| 2   | Trust — brochure figures         | `sections/TrustBar.tsx`     |
+| 3   | The idea (pinned reel + doors)   | `sections/Idea.tsx`         |
+| 4   | Three differentiators            | `sections/Three.tsx`        |
+| 5   | Course builder (interactive)     | `sections/Builder.tsx`      |
+| 6   | The real platform (gallery)      | `sections/Features.tsx`     |
+| 7   | Learners / institutions          | `sections/Audiences.tsx`    |
+| 8   | FAQ                              | `sections/FAQ.tsx`          |
+| 9   | Final CTA                        | `sections/FinalCTA.tsx`     |
+
+Positioning and figures come from `AI_LINC_Carousel_Final.pdf` (the brochure) —
+50,000+ learners, 1,000+ courses, 50+ universities, white-label ready, and the
+six named capabilities. Entries in `site.ts` are tagged `[BROCHURE]`,
+`[PLATFORM]` or `[TODO]` so the source of every claim is traceable.
+
+Two demos on the page are **previews, not live product calls**: the hero level
+picker and the course builder. Both say so in the UI. Do not remove that
+wording — implying they hit the real engine would misrepresent the product.
+
+--- | ------------- | --------------------------------- |
 | 1   | Hero + live dashboard | `sections/Hero.tsx`       |
 | 2   | Trust — stats + partners | `sections/TrustBar.tsx` |
 | 3   | About AI Linc | `sections/About.tsx`              |

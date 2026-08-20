@@ -36,7 +36,7 @@ export default function FinalCTA() {
           </motion.div>
         </Reveal>
 
-        <h2 className="display mt-9 text-[clamp(2.5rem,7.5vw,5.5rem)]">
+        <h2 className="display mt-9 max-w-4xl text-[clamp(2rem,5.6vw,4rem)]">
           <WordReveal text={finalCta.headline} as="span" className="block" />
           <WordReveal
             text={finalCta.headlineAccent}

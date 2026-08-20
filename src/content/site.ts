@@ -4,234 +4,358 @@
  * Every headline, stat, feature and link lives here. Components never hard-code
  * copy — they read from this file.
  *
- *   [VERIFIED] confirmed from the live platform at tour.ailinc.com
+ *   [BROCHURE] from AI_LINC_Carousel_Final.pdf — the official positioning
+ *   [PLATFORM] confirmed from the live product at tour.ailinc.com
  *   [TODO]     placeholder — replace before launch
+ *
+ * Positioning note: the spine of the whole site is
+ *   AI learns you  ->  adapts to you  ->  teaches you  ->  lets you create.
+ * Copy that drifts back into generic "we offer AI courses" language is wrong.
  * ========================================================================== */
 
 export const brand = {
   name: "AI Linc",
-  tagline: "Learn with intent. Graduate job-ready.",
+  /** [BROCHURE] cover line */
+  promise: "Education, Reimagined by AI.",
+  /** [BROCHURE] logo lockup tagline */
+  tagline: "Empowering the world with infinite possibilities of AI",
   email: "careers@ailinc.com",
   phone: "+91 96939 41136",
   address: "Banjara Hills, Hyderabad — 500034, India",
   platformUrl: "https://tour.ailinc.com",
-  demoPassword: "AiLinc@2026",
 } as const;
 
 /* ---------------------------------------------------------------------------
- * NAV
+ * NAV — the two-sided platform is surfaced up front
  * ------------------------------------------------------------------------- */
 export const nav = {
   links: [
+    { label: "How it works", href: "#idea" },
     { label: "Platform", href: "#platform" },
-    { label: "Why AI Linc", href: "#why" },
-    { label: "Features", href: "#features" },
-    { label: "FAQ", href: "#faq" },
+    { label: "For learners", href: "#audiences" },
+    { label: "For institutions", href: "#audiences" },
   ],
   cta: { label: "Experience AI Linc", href: brand.platformUrl },
 } as const;
 
 /* ---------------------------------------------------------------------------
- * 1. HERO
+ * 1. HERO — the claim, then an interactive proof of it
  * ------------------------------------------------------------------------- */
 export const hero = {
-  eyebrow: "The future of learning AI is here",
-  /** Rendered word-by-word; the second line carries the gradient. */
-  headline: { line1: "Don't just learn AI.", line2: "Build with it." },
-  sub: "Learn, build and master real-world AI through hands-on projects, expert guidance and an AI-powered learning platform.",
-  primary: { label: "Explore Programs", href: "#features" },
-  secondary: { label: "Experience AI Linc", href: brand.platformUrl },
-  /** Floating chips over the hero window. */
-  chips: [
-    { label: "23-day streak", tone: "pink" },
-    { label: "AI tuned to you", tone: "violet" },
+  eyebrow: "Your learning. Your level. Your path.",
+  headline: { line1: "AI Linc learns you", line2: "before it teaches you." },
+  sub: "AI-powered learning that adapts to what you already know, teaches what you need next, and lets you build the courses and projects you actually want.",
+  primary: { label: "Experience AI Linc", href: brand.platformUrl },
+  secondary: { label: "See how it works", href: "#idea" },
+  audience: [
+    { label: "I'm a learner", href: "#audiences" },
+    { label: "I'm an institution", href: "#audiences" },
   ],
-} as const;
 
-/* ---------------------------------------------------------------------------
- * 2. TRUST — stats + partners
- * ------------------------------------------------------------------------- */
-export const trust = {
-  line: "Built for learners who want to go beyond theory",
-  stats: [
-    { value: 10000, suffix: "+", label: "Learners", hint: "TODO — confirm" },
-    { value: 500, suffix: "+", label: "Projects built", hint: "TODO — confirm" },
-    { value: 50, suffix: "+", label: "Mentors", hint: "TODO — confirm" },
-    { value: 12, suffix: "+", label: "Institutions", hint: "TODO — confirm" },
-  ],
-  partnersLabel: "Partnered with",
-  /** [TODO] Replace with real partners. Drop SVG/PNG logos in /public/partners/
-   *  and swap this array for { name, logo } objects. */
-  partners: [
-    "ZSkillUp",
-    "Impacteers",
-    "EdExcel Global",
-    "be10x",
-    "UTB University",
-    "Razorpay",
-    "Zerodha",
-  ],
-  note: "TODO — replace the four numbers and the partner list with real, substantiated data.",
-} as const;
-
-/* ---------------------------------------------------------------------------
- * 3. ABOUT
- * ------------------------------------------------------------------------- */
-export const about = {
-  eyebrow: "About AI Linc",
-  headline: "One platform for the whole journey —",
-  headlineAccent: "from first lesson to first offer.",
-  body: "AI Linc is an AI-native learning platform. Courses adapt to your level in real time, an AI student model tracks exactly where you are weak, and everything you build becomes portfolio evidence. Assessments, mock interviews, live mentorship and a matched job board all live in the same place, so nothing about your progress gets lost between tools.",
-  pillars: [
-    { k: "Adaptive", v: "Courses retune to your level after every quiz." },
-    { k: "Hands-on", v: "Projects and coding tasks, not passive video." },
-    { k: "Career-linked", v: "Mock interviews and jobs matched to real skills." },
-  ],
-} as const;
-
-/* ---------------------------------------------------------------------------
- * 4. THE PROBLEM — vertical sliding panel
- * ------------------------------------------------------------------------- */
-export const problem = {
-  eyebrow: "The problem",
-  headline: "Why most people never get past",
-  headlineAccent: "watching tutorials.",
-  items: [
-    {
-      num: "01",
-      title: "Too Much Content",
-      body: "Thousands of tutorials. No clear path.",
-      detail:
-        "Every playlist starts at the beginning. None of them tell you what to do next, or what you can safely skip.",
-    },
-    {
-      num: "02",
-      title: "Too Much Theory",
-      body: "You understand concepts but can't build anything.",
-      detail:
-        "You can explain how a transformer works and still stall on the blank file where a project should start.",
-    },
-    {
-      num: "03",
-      title: "Too Many Tools",
-      body: "New AI tools every week. Where do you start?",
-      detail:
-        "The stack changes faster than any curriculum updates, and nobody tells you which parts actually matter for a job.",
-    },
-    {
-      num: "04",
-      title: "No Real Portfolio",
-      body: "Finishing courses doesn't prove what you can build.",
-      detail:
-        "A wall of certificates says you attended. Hiring managers want a running deployment and the reasoning behind it.",
-    },
-  ],
-  solution: {
-    kicker: "That's why we built",
-    brand: "AI Linc.",
-    body: "A single platform that decides what you learn next, makes you build it, checks whether it actually works, and connects it to the job you want.",
-    cta: { label: "See how it works", href: "#features" },
+  /**
+   * The interactive demo. Picking a level rewrites the plan underneath —
+   * personalisation demonstrated rather than claimed.
+   * [PLATFORM] mirrors the real calibration + adaptive-difficulty behaviour.
+   */
+  demo: {
+    question: "Where are you starting from?",
+    hint: "Pick a level — watch the plan change.",
+    levels: [
+      {
+        id: "beginner",
+        label: "Beginner",
+        blurb: "We'll start with the fundamentals.",
+        skills: [
+          { name: "Python", value: 24 },
+          { name: "ML foundations", value: 12 },
+          { name: "GenAI", value: 6 },
+          { name: "RAG", value: 0 },
+        ],
+        next: "Python for Data Work",
+        why: "No prior code detected. Starting with syntax and data handling.",
+        modules: [
+          "Python basics",
+          "Working with data",
+          "Your first model",
+          "Ship a small app",
+        ],
+        pace: "8 weeks · 5 hrs/week",
+      },
+      {
+        id: "intermediate",
+        label: "Intermediate",
+        blurb: "You already know the basics. Let's skip them.",
+        skills: [
+          { name: "Python", value: 82 },
+          { name: "ML foundations", value: 61 },
+          { name: "GenAI", value: 42 },
+          { name: "RAG", value: 21 },
+        ],
+        next: "RAG Fundamentals",
+        why: "Gap found in RAG. Difficulty adjusted for you.",
+        modules: [
+          "Embeddings & chunking",
+          "Retrieval that works",
+          "Evaluation harness",
+          "Deploy a RAG service",
+        ],
+        pace: "6 weeks · 8 hrs/week",
+      },
+      {
+        id: "advanced",
+        label: "Advanced",
+        blurb: "Let's get straight to implementation.",
+        skills: [
+          { name: "Python", value: 96 },
+          { name: "ML foundations", value: 88 },
+          { name: "GenAI", value: 79 },
+          { name: "RAG", value: 68 },
+        ],
+        next: "Agentic Architectures",
+        why: "Fundamentals cleared. Skipping ahead to systems work.",
+        modules: [
+          "Tool calling & memory",
+          "Multi-agent orchestration",
+          "Evals at scale",
+          "Production hardening",
+        ],
+        pace: "5 weeks · 10 hrs/week",
+      },
+    ],
   },
 } as const;
 
 /* ---------------------------------------------------------------------------
- * 5. WHY AI LINC — differentiators
+ * 2. TRUST — [BROCHURE] these are the official figures
  * ------------------------------------------------------------------------- */
-export const why = {
-  eyebrow: "Why AI Linc",
-  headline: "Not another course library.",
-  headlineAccent: "A system that adapts to you.",
-  sub: "Four things that change what happens between starting and getting hired.",
-  cards: [
+export const trust = {
+  line: "One platform. Six breakthroughs. Infinite outcomes.",
+  stats: [
+    { value: 50000, suffix: "+", text: null, label: "Active learners" },
+    { value: 1000, suffix: "+", text: null, label: "Courses" },
+    { value: 50, suffix: "+", text: null, label: "Universities" },
+    { value: null, suffix: "", text: "Ready", label: "White-label" },
+  ],
+  partnersLabel: "Jobs aggregated from",
+  /** [BROCHURE] the job sources named on the careers page */
+  partners: ["LinkedIn", "Naukri", "Indeed", "Internshala", "Glassdoor"],
+} as const;
+
+/* ---------------------------------------------------------------------------
+ * 3. THE IDEA — pinned reel, then the split-door reveal
+ * ------------------------------------------------------------------------- */
+export const idea = {
+  eyebrow: "How AI Linc thinks",
+  headline: "AI Linc doesn't start",
+  headlineAccent: "with a course.",
+  steps: [
     {
-      icon: "ai",
-      title: "AI that knows your level",
-      body: "A calibration assessment builds your student model. From then on, quizzes start at the right difficulty and articles open at your reading tier — automatically.",
-      proof: "AI has tuned this course to you",
+      num: "01",
+      name: "Assess",
+      title: "It measures where you actually are",
+      body: "A calibration assessment before anything is recommended.",
+      detail:
+        "Not a form asking how confident you feel. A real assessment that finds the edge of what you know.",
     },
     {
-      icon: "build",
-      title: "Learn by building",
-      body: "Every course carries modules, coding tasks and quizzes that produce something that runs. Progress is measured in what you shipped, not hours watched.",
-      proof: "10 coding tasks per course",
+      num: "02",
+      name: "Understand",
+      title: "It builds a model of you",
+      body: "Strengths, gaps and goals, held as a live profile.",
+      detail:
+        "Every quiz, task and interview updates it. The platform always knows which topic is your weakest right now.",
     },
     {
-      icon: "assess",
-      title: "Proof, not certificates",
-      body: "Adaptive assessments and AI mock interviews score you against a rubric and hand back a transcript — so your resume claims have evidence behind them.",
-      proof: "Rubric-based feedback",
+      num: "03",
+      name: "Adapt",
+      title: "The course changes for you",
+      body: "Wrong answer? Easier next. Right answer? Harder.",
+      detail:
+        "Difficulty, reading level and sequencing all move around your profile — in real time, not at the end of a module.",
     },
     {
-      icon: "jobs",
-      title: "Career built in",
-      body: "A resume builder and a live job board sit inside the platform, matched to the skills you have actually demonstrated. No gap between finishing and applying.",
-      proof: "Roles matched to your profile",
+      num: "04",
+      name: "Teach",
+      title: "Then it actually teaches",
+      body: "An AI tutor that explains, quizzes and debugs with you.",
+      detail:
+        "Ask, discuss, interrupt, practise, get feedback. It re-explains in simpler words when you are stuck.",
+    },
+  ],
+  reveal: {
+    kicker: "It starts",
+    accent: "with you.",
+    body: "AI Linc first understands what you know, where you're struggling and what you're trying to achieve. Everything after that — the content you see, the difficulty you face, the projects you build — is shaped around that answer.",
+    cta: { label: "See what that unlocks", href: "#three" },
+  },
+} as const;
+
+/* ---------------------------------------------------------------------------
+ * 4. THREE THINGS — the ownable differentiators
+ * ------------------------------------------------------------------------- */
+export const three = {
+  eyebrow: "Three things nobody else does this way",
+  headline: "Not a course library.",
+  headlineAccent: "A system that learns you.",
+  items: [
+    {
+      num: "01",
+      key: "personalize",
+      kicker: "Personalize",
+      title: "The course changes with you.",
+      body: "Don't know something? The AI goes deeper and re-explains it in simpler words. Already know it? It moves you forward instead of making you sit through it.",
+      /** [BROCHURE] adaptive learning engine */
+      points: [
+        "Wrong answer → difficulty drops automatically",
+        "Right answer → AI cranks up the challenge",
+        "AI articles re-explain in simpler words",
+        "Built-in IDE — run and submit code instantly",
+      ],
+      image: "/platform/course-detail.webp",
+    },
+    {
+      num: "02",
+      key: "teach",
+      kicker: "AI Teacher",
+      title: "Your teacher is always there.",
+      body: "Not a chatbot bolted onto a video player. A tutor that teaches out loud, puts the material on screen as it explains, and lets you interrupt mid-sentence.",
+      points: [
+        "Ask, discuss, interrupt, practise",
+        "Explains your own code back to you",
+        "Debugs your errors and says why",
+        "AI-generated videos for tough concepts",
+      ],
+      image: "/platform/dashboard.webp",
+    },
+    {
+      num: "03",
+      key: "create",
+      kicker: "Create",
+      title: "Don't find a course. Create one.",
+      body: "Type what you want to learn. AI Linc generates the whole thing — modules, videos, quizzes, projects and rubrics. No subject-matter expert required.",
+      /** [BROCHURE] AI Course Builder */
+      points: [
+        "Title + duration + difficulty → full course",
+        "Auto-generates videos, quizzes, assignments",
+        "Auto-evaluation — no human grading",
+        "Publish-ready in a single click",
+      ],
+      image: "/platform/courses.webp",
     },
   ],
 } as const;
 
 /* ---------------------------------------------------------------------------
- * 6. FEATURES — horizontal scroll gallery of REAL platform screens
+ * 5. COURSE BUILDER — the memorable interaction
  * ---------------------------------------------------------------------------
- * Images are genuine captures from tour.ailinc.com, in /public/platform/.
+ * A preview rendered on the page, not a live call to the real builder. The UI
+ * says so, because implying otherwise would misrepresent the product.
+ * ------------------------------------------------------------------------- */
+export const builder = {
+  eyebrow: "Try it",
+  headline: "What do you want",
+  headlineAccent: "to learn?",
+  sub: "Type anything. This is a preview of what the AI Course Builder does inside the platform.",
+  placeholder: "e.g. AI agents for finance",
+  cta: "Build it",
+  generating: "Generating your course",
+  disclaimer:
+    "Preview only. In the platform this produces real videos, quizzes, projects and rubrics.",
+  suggestions: [
+    "AI agents for finance",
+    "Prompt engineering",
+    "RAG systems",
+    "Computer vision",
+  ],
+  /** Curated outlines for the suggestion chips; anything else is composed. */
+  presets: {
+    "ai agents for finance": [
+      "Agent fundamentals",
+      "Tool calling",
+      "Memory & state",
+      "Retrieval over filings",
+      "Risk & guardrails",
+      "Final project — a finance agent",
+    ],
+    "prompt engineering": [
+      "How models read prompts",
+      "Structure & constraints",
+      "Few-shot patterns",
+      "Chain-of-thought & ReAct",
+      "Evaluating prompts",
+      "Final project — a prompt suite",
+    ],
+    "rag systems": [
+      "Chunking that works",
+      "Embeddings & vector stores",
+      "Retrieval strategies",
+      "Grounding & citations",
+      "Evaluation harness",
+      "Final project — a production RAG service",
+    ],
+    "computer vision": [
+      "Images as tensors",
+      "Convolutions in practice",
+      "Detection & segmentation",
+      "Vision transformers",
+      "Deploying a vision model",
+      "Final project — a vision pipeline",
+    ],
+  } as Record<string, string[]>,
+  /** Scaffold used for a topic with no preset. */
+  generic: [
+    "Foundations of {topic}",
+    "Core techniques",
+    "Hands-on practice",
+    "Applied {topic}",
+    "Evaluation & quality",
+    "Final project — ship it",
+  ],
+} as const;
+
+/* ---------------------------------------------------------------------------
+ * 6. PLATFORM — real screens, horizontal gallery
  * ------------------------------------------------------------------------- */
 export const features = {
-  eyebrow: "The platform",
-  headline: "From learning",
-  headlineAccent: "to building.",
-  sub: "Every screen below is the real AI Linc platform. Scroll across.",
-  /**
-   * Each slide carries a still (`image`) and a short silent loop (`video`).
-   * The still is the poster, so first paint is instant; the clip fades in and
-   * plays only while its slide is the active one. Clips are recorded from the
-   * live demo — see the recording notes in the README.
-   */
-  /**
-   * TODO — slides 03 (Roadmaps) and 04 (AI Tutor) have no screenshot yet.
-   * Neither feature exists on tour.ailinc.com (both 404); they only ship on
-   * staging.ailinc.com, which has no demo-role login. Capture them from a
-   * STUDENT account (not Super Admin), save as /public/platform/roadmaps.webp
-   * and ai-tutor.webp, then set `image` on those two slides. Until then they
-   * render a branded placeholder rather than a fabricated screen.
-   */
+  eyebrow: "See it in action",
+  headline: "The real platform.",
+  headlineAccent: "Not a mockup.",
+  sub: "Every screen below is the live product. Scroll across.",
   pendingNote:
     "Roadmaps and AI Tutor still need screenshots from a student account on staging.",
   slides: [
     {
       id: "dashboard",
       num: "01",
-      title: "Your AI briefing",
+      title: "AI knows what you know",
       body: "Open the app and it tells you where you actually are — progress, streak, weakest skill, and the one thing worth doing today.",
       image: "/platform/dashboard.webp" as string | null,
       video: "/platform/clips/dashboard.mp4" as string | null,
       tags: ["Skill profile", "Daily focus", "Streaks"],
     },
     {
-      // Merged: the catalogue and the calibration story are one idea.
       id: "courses",
       num: "02",
-      title: "Courses that adapt to you",
-      body: "AI-personalised courses that retune to your level in real time. A calibration assessment sets your baseline, then difficulty, reading tier and pacing reshape around it — practise, get instant feedback, and level up.",
+      title: "AI changes what you learn next",
+      body: "A calibration assessment sets your baseline, then difficulty, reading tier and pacing reshape around it — in real time, after every answer.",
       image: "/platform/course-detail.webp" as string | null,
       video: "/platform/clips/course-detail.mp4" as string | null,
       tags: ["Calibration", "Adaptive difficulty", "Instant feedback"],
     },
     {
-      // [TODO] Awaiting a student-account capture. See pendingNote above.
       id: "roadmaps",
       num: "03",
       title: "Roadmaps you can follow — or build",
-      body: "Pick a role, skill or company-based path and follow it. Every step is a verified topic you can practise and be scored on — and clicking a topic generates a full course for it, straight into your Courses.",
+      body: "Pick a role, skill or company-based path and follow it. Every step is a verified topic you can practise and be scored on — and clicking a topic generates a full course for it.",
       image: null as string | null,
       video: null as string | null,
       tags: ["Role, skill & company paths", "Build your own", "Topic → course"],
     },
     {
-      // [TODO] Awaiting a student-account capture. See pendingNote above.
       id: "ai-tutor",
       num: "04",
-      title: "A tutor you can talk to",
-      body: "Say what you want to learn and talk it through out loud. The tutor listens, answers in voice, and puts the material on screen as it explains — interrupt it mid-sentence, or ask to be quizzed.",
+      title: "AI teaches you in real time",
+      body: "Say what you want to learn and talk it through out loud. The tutor listens, answers in voice, and puts the material on screen as it explains.",
       image: null as string | null,
       video: null as string | null,
       tags: ["Two-way voice", "Shows as it explains", "Interrupt anytime"],
@@ -239,38 +363,38 @@ export const features = {
     {
       id: "assessments",
       num: "05",
-      title: "Assessments that find the edge",
-      body: "Adaptive tests that locate exactly where your understanding stops, instead of confirming what you already know.",
+      title: "Proctored assessments",
+      body: "Face detection, tab-switch flagging and fullscreen enforcement, with topic-wise scoring and skill-gap analysis baked in.",
       image: "/platform/assessments.webp" as string | null,
       video: "/platform/clips/assessments.mp4" as string | null,
-      tags: ["Adaptive", "Scored", "Retakeable"],
+      tags: ["Zero plagiarism", "Skill-gap reports", "Institution-grade"],
     },
     {
       id: "mock-interview",
       num: "06",
-      title: "AI mock interviews",
-      body: "Practice AI-driven mock interviews with instant, rubric-based feedback to sharpen your answers before it counts.",
+      title: "Interview like it's real",
+      body: "AI asks, evaluates, scores and gives feedback — role-specific questions, speech recognition, per-question scoring. Unlimited rounds.",
       image: "/platform/mock-interview.webp" as string | null,
       video: "/platform/clips/mock-interview.mp4" as string | null,
-      tags: ["Voice + text", "Rubric scoring", "On demand"],
+      tags: ["Live proctoring", "Instant scoring", "Unlimited sessions"],
     },
     {
       id: "jobs",
       num: "07",
-      title: "Jobs matched to you",
-      body: "Discover roles matched to your profile, filter by what matters, and track every application from one board.",
+      title: "Every job, just for you",
+      body: "LinkedIn, Naukri, Indeed, Internshala and Glassdoor scraped into one feed and matched to the skills you have actually demonstrated.",
       image: "/platform/jobs.webp" as string | null,
       video: "/platform/clips/jobs.mp4" as string | null,
-      tags: ["Matched roles", "Filters", "Tracking"],
+      tags: ["Auto-matched", "Course-aware", "Zero manual searching"],
     },
     {
       id: "resume",
       num: "08",
-      title: "A resume backed by evidence",
-      body: "Build a resume from what the platform has actually seen you do — projects completed, skills demonstrated, scores earned.",
+      title: "Resume built by AI",
+      body: "Auto-built from your courses, profile and certifications, with an ATS score and a job-description compatibility check.",
       image: "/platform/resume.webp" as string | null,
       video: "/platform/clips/resume.mp4" as string | null,
-      tags: ["Auto-filled", "ATS-ready", "Exportable"],
+      tags: ["ATS score", "Multiple templates", "Real-time suggestions"],
     },
     {
       id: "live-sessions",
@@ -284,47 +408,67 @@ export const features = {
     {
       id: "community",
       num: "10",
-      title: "A community that ships",
-      body: "Peers working on the same problems, in the same place you learn — not a separate forum you forget to open.",
+      title: "A community the AI keeps alive",
+      body: "AI sparks discussions, answers doubts and nudges learners to think — engagement that compounds instead of dying after week two.",
       image: "/platform/community.webp" as string | null,
       video: "/platform/clips/community.mp4" as string | null,
-      tags: ["Peers", "Discussions", "Alumni"],
+      tags: ["AI-led prompts", "Doubt solving", "Peers + alumni"],
     },
   ],
 } as const;
 
 /* ---------------------------------------------------------------------------
- * 7. VIDEO + FOUNDER'S NOTE
- * ---------------------------------------------------------------------------
- * Drop the walkthrough at /public/tour.mp4 and set videoSrc.
- * Until then the block shows the real dashboard with a play affordance.
+ * 7. AUDIENCES — [BROCHURE] the two-sided platform
  * ------------------------------------------------------------------------- */
-export const walkthrough = {
-  eyebrow: "See it in action",
-  headline: "A five-minute walk through the platform.",
-  videoSrc: null as string | null, // TODO — "/tour.mp4"
-  poster: "/platform/dashboard.webp",
-  duration: "5:12",
-  chapters: [
-    { time: "0:00", label: "Your AI briefing" },
-    { time: "1:04", label: "Adaptive courses" },
-    { time: "2:11", label: "Assessments & mock interviews" },
-    { time: "3:20", label: "Live sessions" },
-    { time: "4:15", label: "Resume & jobs" },
+export const audiences = {
+  eyebrow: "Two sides, one platform",
+  headline: "Built for the people learning —",
+  headlineAccent: "and the people teaching them.",
+  sides: [
+    {
+      key: "learners",
+      label: "For learners",
+      title: "Learn in a way that fits you.",
+      body: "Adaptive courses, an AI tutor that teaches out loud, proctored assessments, unlimited AI interviews, a matched job feed and a resume built from what you actually did.",
+      points: [
+        "Adaptive learning",
+        "AI tutor",
+        "Assessments",
+        "AI interviews",
+        "Jobs",
+        "Community",
+        "Resume",
+      ],
+      cta: { label: "Experience AI Linc", href: brand.platformUrl },
+    },
+    {
+      key: "institutions",
+      label: "For institutions",
+      title: "Run your own academy on it.",
+      body: "Generate courses without subject-matter experts, manage content and cohorts, proctor assessments at scale, and see every metric in one dashboard — white-labelled as yours.",
+      points: [
+        "AI course builder",
+        "Content management",
+        "Proctored assessments",
+        "Admin dashboard",
+        "Analytics",
+        "White-label",
+        "Job posting",
+        "Student management",
+      ],
+      cta: { label: "Book a platform demo", href: `mailto:${brand.email}` },
+    },
   ],
-  founder: {
-    eyebrow: "Founder's note",
-    // [TODO] Replace with the real founder name, title and photo.
-    name: "TODO — Founder Name",
-    role: "Founder, AI Linc",
-    photo: null as string | null, // TODO — "/founder.jpg"
-    quote: [
-      "We kept meeting people who had finished six courses and still could not ship anything. The problem was never effort. It was that nothing they used knew where they actually were.",
-      "So we built the opposite. A platform that measures where you stand, decides what you do next, makes you build it, and then checks whether it holds up. Everything else — the interviews, the resume, the jobs — is downstream of that.",
-    ],
-    sign: "TODO — signature name",
-  },
-  note: "TODO — add /public/tour.mp4, the founder's real name, title, photo and note.",
+  /** [BROCHURE] admin dashboard capability chips */
+  adminMetrics: [
+    "Daily logins",
+    "Time spent",
+    "Attendance",
+    "Activity trends",
+    "Live rankings",
+    "Skill scorecards",
+    "Streak tracking",
+  ],
 } as const;
 
 /* ---------------------------------------------------------------------------
@@ -335,32 +479,36 @@ export const faq = {
   headline: "Questions, answered.",
   items: [
     {
-      q: "Who is AI Linc for?",
-      a: "Anyone moving from understanding AI to building with it — students, working developers, and professionals switching in. The platform calibrates to your level, so beginners and experienced engineers follow genuinely different paths through the same courses.",
+      q: "What actually makes AI Linc different?",
+      a: "Most platforms play the same course for everyone. AI Linc assesses you first, builds a live model of what you know, then reshapes the content, the difficulty and the sequence around it. On top of that an AI tutor teaches you directly — and anyone can generate a complete course from a single sentence.",
+    },
+    {
+      q: "How does the adaptive part work in practice?",
+      a: "A calibration assessment sets your baseline. After that every answer moves you: get something wrong and the difficulty drops and the material is re-explained in simpler words; get it right and it cranks up. Your weakest topic is always surfaced as the thing to do next.",
     },
     {
       q: "Do I need coding experience to start?",
-      a: "No. A calibration assessment establishes where you are before anything is recommended, and courses open at the right difficulty from there. If you have never written code, the platform starts you there rather than assuming it.",
+      a: "No. The calibration decides where you begin, so a complete beginner and an experienced engineer follow genuinely different paths through the same course. If you have never written code, it starts you there rather than assuming.",
     },
     {
-      q: "How is this different from a normal course platform?",
-      a: "Normal platforms play the same video for everyone. AI Linc builds a student model from your assessments and performance, then retunes quiz difficulty, reading level and sequencing around it. It also tells you what to do today, and why that beats another pass over material you already know.",
+      q: "What is the AI tutor, exactly?",
+      a: "A two-way tutor you can talk to. It explains out loud, puts the material on screen as it goes, quizzes you, reads your own code back to you and debugs your errors with an explanation. You can interrupt it mid-sentence or ask it to slow down.",
     },
     {
-      q: "What do I actually build?",
-      a: "Each course carries modules, articles, quizzes and coding tasks that end in working output. Data Structures & Algorithms is pattern-first for interviews; Full-Stack Web Development takes you from an empty folder to a deployed URL; Python for Data Science works with genuinely messy data.",
+      q: "Can I really generate my own course?",
+      a: "Yes. Give it a title, a duration and a difficulty and the AI Course Builder produces the modules, videos, quizzes, assignments and rubrics — auto-evaluated, publish-ready, with no subject-matter expert involved.",
     },
     {
-      q: "How do the AI mock interviews work?",
-      a: "You pick a topic and difficulty, or schedule a full round. A voice-and-text AI interviewer asks domain questions, follows up on your answers, and scores communication, depth and correctness against a rubric. Results feed back into your student model.",
+      q: "How do assessments and interviews stay credible?",
+      a: "Assessments are proctored: live face detection, tab-switch and window-change flagging, fullscreen enforcement and screen recording, with topic-wise scoring and skill-gap analysis. Interviews are AI-run with speech recognition and per-question scoring, and you get a performance summary and improvement areas.",
     },
     {
-      q: "Is there live mentorship?",
-      a: "Yes. Live sessions and office hours run natively inside the platform and are recorded against your timeline, so you can go back to the moment something was explained.",
+      q: "What happens on the jobs side?",
+      a: "Roles are scraped from LinkedIn, Naukri, Indeed, Internshala and Glassdoor into one feed and matched to your skills and the courses you have completed. Your resume is auto-built from that same evidence, with an ATS score and a job-description compatibility check.",
     },
     {
-      q: "What happens after I finish?",
-      a: "You leave with deployed projects, assessment and interview records that substantiate your skills, a resume built from that evidence, and access to a job board matched to what you have demonstrably done.",
+      q: "Can my college or company run its own instance?",
+      a: "Yes. AI Linc is white-label ready — your branding, your domain, your curriculum, with admin controls, analytics and student management.",
     },
     {
       q: "Can I try it before signing up?",
@@ -373,11 +521,11 @@ export const faq = {
  * 9. FINAL CTA
  * ------------------------------------------------------------------------- */
 export const finalCta = {
-  headline: "Your AI journey",
-  headlineAccent: "starts here.",
-  sub: "Learn the skills. Build the systems. Graduate job-ready.",
+  headline: "Don't take another course.",
+  headlineAccent: "Experience learning that adapts to you.",
+  sub: "Assess. Understand. Adapt. Teach. Build. All in one platform.",
   primary: { label: "Experience AI Linc", href: brand.platformUrl },
-  secondary: { label: "Talk to us", href: `mailto:${brand.email}` },
+  secondary: { label: "Book a platform demo", href: `mailto:${brand.email}` },
 } as const;
 
 /* ---------------------------------------------------------------------------
@@ -385,31 +533,33 @@ export const finalCta = {
  * ------------------------------------------------------------------------- */
 export const footer = {
   blurb:
-    "An AI-native learning platform. Adaptive courses, real projects, mock interviews and the jobs that follow — in one place.",
+    "An AI-native learning platform. It learns you, adapts to you, teaches you — and lets you create the course you actually need.",
   columns: [
     {
-      title: "Platform",
+      title: "Product",
       links: [
-        { label: "Overview", href: "#platform" },
-        { label: "Features", href: "#features" },
+        { label: "How it works", href: "#idea" },
+        { label: "The platform", href: "#platform" },
+        { label: "Build a course", href: "#builder" },
         { label: "Live demo", href: brand.platformUrl },
-        { label: "Walkthrough", href: "#walkthrough" },
       ],
     },
     {
-      title: "About",
+      title: "For learners",
       links: [
-        { label: "About AI Linc", href: "#about" },
-        { label: "Why AI Linc", href: "#why" },
-        { label: "Founder's note", href: "#walkthrough" },
-      ],
-    },
-    {
-      title: "Resources",
-      links: [
+        { label: "Adaptive courses", href: "#three" },
+        { label: "AI tutor", href: "#three" },
+        { label: "Interviews & jobs", href: "#platform" },
         { label: "FAQ", href: "#faq" },
-        { label: "Courses", href: brand.platformUrl },
-        { label: "Jobs board", href: brand.platformUrl },
+      ],
+    },
+    {
+      title: "For institutions",
+      links: [
+        { label: "AI course builder", href: "#audiences" },
+        { label: "Admin & analytics", href: "#audiences" },
+        { label: "White-label", href: "#audiences" },
+        { label: "Book a demo", href: `mailto:${brand.email}` },
       ],
     },
     {

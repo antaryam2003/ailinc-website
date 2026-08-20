@@ -1,20 +1,30 @@
 import Hero from "@/components/sections/Hero";
 import TrustBar from "@/components/sections/TrustBar";
-import About from "@/components/sections/About";
-import Problem from "@/components/sections/Problem";
-import Why from "@/components/sections/Why";
+import Idea from "@/components/sections/Idea";
+import Three from "@/components/sections/Three";
+import Builder from "@/components/sections/Builder";
 import Features from "@/components/sections/Features";
-import Walkthrough from "@/components/sections/Walkthrough";
+import Audiences from "@/components/sections/Audiences";
 import FAQ from "@/components/sections/FAQ";
 import FinalCTA from "@/components/sections/FinalCTA";
 import { faq } from "@/content/site";
 
 /**
- * Section order follows the agreed flow:
- *   hero + live dashboard → trust → about → problem (pinned reel) → solution
- *   → why → features (horizontal gallery) → video + founder → FAQ → CTA
- * The Problem component renders its own "That's why we built AI Linc" beat
- * immediately after the pinned section, so nothing sits between them.
+ * The homepage is one argument, in this order:
+ *
+ *   1 HERO       AI Linc learns you before it teaches you  (+ prove it, live)
+ *   2 TRUST      the numbers behind the claim
+ *   3 IDEA       assess → understand → adapt → teach, then "it starts with you"
+ *   4 THREE      personalize · AI teacher · create
+ *   5 BUILDER    type a topic, watch a course appear
+ *   6 PLATFORM   the real product, screen by screen
+ *   7 AUDIENCES  learners on one side, institutions on the other
+ *   8 FAQ
+ *   9 CTA
+ *
+ * Every section is downstream of one sentence: AI learns you, adapts to you,
+ * teaches you, and lets you create. Copy that drifts back to "we offer AI
+ * courses" belongs somewhere else.
  */
 export default function Home() {
   return (
@@ -34,14 +44,13 @@ export default function Home() {
         }}
       />
 
-      <div id="platform" className="scroll-mt-24" />
       <Hero />
       <TrustBar />
-      <About />
-      <Problem />
-      <Why />
+      <Idea />
+      <Three />
+      <Builder />
       <Features />
-      <Walkthrough />
+      <Audiences />
       <FAQ />
       <FinalCTA />
     </>
