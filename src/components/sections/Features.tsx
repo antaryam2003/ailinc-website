@@ -3,6 +3,7 @@
 import Image from "next/image";
 import {
   motion,
+  useInView,
   useMotionValueEvent,
   useReducedMotion,
   useScroll,
@@ -33,6 +34,9 @@ export default function Features() {
   const reduced = useReducedMotion();
   const [distance, setDistance] = useState(0);
   const [active, setActive] = useState(0);
+  // Slide 0 is "active" from first render, so without this the first clip would
+  // be fetched on page load for a gallery that is several screens below.
+  const nearGallery = useInView(sectionRef, { margin: "300px" });
 
   useEffect(() => {
     const measure = () => {
@@ -77,7 +81,7 @@ export default function Features() {
         <div className="mt-12 flex snap-x snap-mandatory gap-6 overflow-x-auto px-5 pb-6">
           {SLIDES.map((s) => (
             <div key={s.id} className="w-[min(85vw,60rem)] shrink-0 snap-center">
-              <Slide slide={s} />
+              <Slide slide={s} active={false} />
             </div>
           ))}
         </div>
@@ -131,7 +135,7 @@ export default function Features() {
                 Math.abs(i - active) > 1 ? "opacity-45" : "opacity-100",
               )}
             >
-              <Slide slide={s} />
+              <Slide slide={s} active={nearGallery && i === active} />
             </div>
           ))}
         </motion.div>
@@ -187,7 +191,75 @@ function PendingShot({ title }: { title: string }) {
   );
 }
 
-function Slide({ slide }: { slide: (typeof SLIDES)[number] }) {
+/**
+ * Still + looping clip. The still is the poster so first paint is instant and
+ * identical to the static build; the clip fades in over it and plays only while
+ * its slide is active, which keeps ten videos off the network and the decoder.
+ */
+function SlideMedia({
+  slide,
+  active,
+}: {
+  slide: (typeof SLIDES)[number];
+  active: boolean;
+}) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const reduced = useReducedMotion();
+  const [ready, setReady] = useState(false);
+  const wanted = active && !reduced && Boolean(slide.video);
+
+  useEffect(() => {
+    const v = videoRef.current;
+    if (!v) return;
+    if (wanted) {
+      // load() is deferred to first activation via preload="none"
+      const play = v.play();
+      if (play) play.catch(() => {});
+    } else {
+      v.pause();
+      if (v.currentTime > 0) v.currentTime = 0;
+    }
+  }, [wanted]);
+
+  if (!slide.image) return <PendingShot title={slide.title} />;
+
+  return (
+    <div className="relative">
+      <Image
+        src={asset(slide.image)}
+        alt={`${slide.title} — the AI Linc platform`}
+        width={2400}
+        height={1500}
+        className="w-full"
+        sizes="(max-width: 1024px) 86vw, 36rem"
+      />
+      {slide.video && !reduced && (
+        <video
+          ref={videoRef}
+          src={asset(slide.video)}
+          muted
+          loop
+          playsInline
+          preload="none"
+          aria-hidden
+          onPlaying={() => setReady(true)}
+          className={cn(
+            "absolute inset-0 h-full w-full object-cover transition-opacity duration-700",
+            ready && wanted ? "opacity-100" : "opacity-0",
+          )}
+        />
+      )}
+    </div>
+  );
+}
+
+function Slide({
+  slide,
+  active,
+}: {
+  slide: (typeof SLIDES)[number];
+  active: boolean;
+}) {
   return (
     <div className="grid gap-6 lg:grid-cols-[1fr_1.55fr] lg:items-center lg:gap-10">
       <div>
@@ -217,20 +289,7 @@ function Slide({ slide }: { slide: (typeof SLIDES)[number] }) {
       </div>
 
       <AppWindow compact>
-        {slide.image ? (
-          <Image
-            src={asset(slide.image)}
-            alt={`${slide.title} — the AI Linc platform`}
-            width={2400}
-            height={1500}
-            className="w-full"
-            sizes="(max-width: 1024px) 86vw, 36rem"
-          />
-        ) : (
-          // No capture for this feature yet. A branded placeholder is honest;
-          // a hand-drawn fake screenshot would not be.
-          <PendingShot title={slide.title} />
-        )}
+        <SlideMedia slide={slide} active={active} />
       </AppWindow>
     </div>
   );

@@ -181,6 +181,12 @@ export const features = {
   headlineAccent: "to building.",
   sub: "Every screen below is the real AI Linc platform. Scroll across.",
   /**
+   * Each slide carries a still (`image`) and a short silent loop (`video`).
+   * The still is the poster, so first paint is instant; the clip fades in and
+   * plays only while its slide is the active one. Clips are recorded from the
+   * live demo — see the recording notes in the README.
+   */
+  /**
    * TODO — slides 03 (Roadmaps) and 04 (AI Tutor) have no screenshot yet.
    * Neither feature exists on tour.ailinc.com (both 404); they only ship on
    * staging.ailinc.com, which has no demo-role login. Capture them from a
@@ -197,6 +203,7 @@ export const features = {
       title: "Your AI briefing",
       body: "Open the app and it tells you where you actually are — progress, streak, weakest skill, and the one thing worth doing today.",
       image: "/platform/dashboard.webp" as string | null,
+      video: "/platform/clips/dashboard.mp4" as string | null,
       tags: ["Skill profile", "Daily focus", "Streaks"],
     },
     {
@@ -206,6 +213,7 @@ export const features = {
       title: "Courses that adapt to you",
       body: "AI-personalised courses that retune to your level in real time. A calibration assessment sets your baseline, then difficulty, reading tier and pacing reshape around it — practise, get instant feedback, and level up.",
       image: "/platform/course-detail.webp" as string | null,
+      video: "/platform/clips/course-detail.mp4" as string | null,
       tags: ["Calibration", "Adaptive difficulty", "Instant feedback"],
     },
     {
@@ -215,6 +223,7 @@ export const features = {
       title: "Roadmaps you can follow — or build",
       body: "Pick a role, skill or company-based path and follow it. Every step is a verified topic you can practise and be scored on — and clicking a topic generates a full course for it, straight into your Courses.",
       image: null as string | null,
+      video: null as string | null,
       tags: ["Role, skill & company paths", "Build your own", "Topic → course"],
     },
     {
@@ -224,6 +233,7 @@ export const features = {
       title: "A tutor you can talk to",
       body: "Say what you want to learn and talk it through out loud. The tutor listens, answers in voice, and puts the material on screen as it explains — interrupt it mid-sentence, or ask to be quizzed.",
       image: null as string | null,
+      video: null as string | null,
       tags: ["Two-way voice", "Shows as it explains", "Interrupt anytime"],
     },
     {
@@ -232,6 +242,7 @@ export const features = {
       title: "Assessments that find the edge",
       body: "Adaptive tests that locate exactly where your understanding stops, instead of confirming what you already know.",
       image: "/platform/assessments.webp" as string | null,
+      video: "/platform/clips/assessments.mp4" as string | null,
       tags: ["Adaptive", "Scored", "Retakeable"],
     },
     {
@@ -240,6 +251,7 @@ export const features = {
       title: "AI mock interviews",
       body: "Practice AI-driven mock interviews with instant, rubric-based feedback to sharpen your answers before it counts.",
       image: "/platform/mock-interview.webp" as string | null,
+      video: "/platform/clips/mock-interview.mp4" as string | null,
       tags: ["Voice + text", "Rubric scoring", "On demand"],
     },
     {
@@ -248,6 +260,7 @@ export const features = {
       title: "Jobs matched to you",
       body: "Discover roles matched to your profile, filter by what matters, and track every application from one board.",
       image: "/platform/jobs.webp" as string | null,
+      video: "/platform/clips/jobs.mp4" as string | null,
       tags: ["Matched roles", "Filters", "Tracking"],
     },
     {
@@ -256,6 +269,7 @@ export const features = {
       title: "A resume backed by evidence",
       body: "Build a resume from what the platform has actually seen you do — projects completed, skills demonstrated, scores earned.",
       image: "/platform/resume.webp" as string | null,
+      video: "/platform/clips/resume.mp4" as string | null,
       tags: ["Auto-filled", "ATS-ready", "Exportable"],
     },
     {
@@ -264,6 +278,7 @@ export const features = {
       title: "Live sessions and mentorship",
       body: "Cohort classes and office hours run inside the platform, recorded and tied back to your timeline.",
       image: "/platform/live-sessions.webp" as string | null,
+      video: "/platform/clips/live-sessions.mp4" as string | null,
       tags: ["Live classes", "Recorded", "Mentors"],
     },
     {
@@ -272,6 +287,7 @@ export const features = {
       title: "A community that ships",
       body: "Peers working on the same problems, in the same place you learn — not a separate forum you forget to open.",
       image: "/platform/community.webp" as string | null,
+      video: "/platform/clips/community.mp4" as string | null,
       tags: ["Peers", "Discussions", "Alumni"],
     },
   ],

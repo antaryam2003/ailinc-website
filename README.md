@@ -58,6 +58,24 @@ reordering breaks it.
 
 ---
 
+## Recording the feature clips
+
+`public/platform/clips/*.mp4` are silent loops recorded from the live demo with
+Puppeteer + ffmpeg (see `scratchpad/qa/record.mjs`): sign in as the Student demo
+role, dismiss the product tour, glide the page down and back so the clip starts
+and ends at scrollTop 0 and loops seamlessly, then encode at 1200px / 24fps /
+crf 27.
+
+Do not use GIF here. The same clip measures 78 KB as MP4 and 974 KB as GIF, at
+lower quality — twelve times the weight for a worse picture.
+
+Each slide keeps its `image` as the poster, so first paint is a static screenshot
+and the clip fades in over it. `preload="none"` plus an in-view gate means
+nothing is fetched until the visitor approaches the gallery, and only the active
+slide plays.
+
+---
+
 ## The screenshots are real
 
 Every product image in `public/platform/` is a genuine 2×-retina capture of the
@@ -95,6 +113,7 @@ back to static grids and a plain swipe carousel.
 | Split-door reveal          | Problem → Solution   | panel halves part from the centre, solution emerges behind |
 | Rolling numeral            | The Problem          | translateY on a stacked digit column       |
 | Pinned horizontal gallery  | Features             | scroll → `translateX`, distance measured from DOM |
+| Looping product clips      | Features             | silent MP4 over its own still; only the active slide loads and plays |
 | Cursor spotlight cards     | Why AI Linc          | `SpotlightCard` — radial glow at pointer   |
 | Count-up stats             | Trust bar            | `Counter`                                  |
 | Gradient hairline on hover | cards                | `.grad-border` mask trick                  |
