@@ -98,21 +98,34 @@ stream in four at a time behind it.
 
 ---
 
-## Recording the feature clips
+## The feature gallery clips
 
-`public/platform/clips/*.mp4` are silent loops recorded from the live demo with
-Puppeteer + ffmpeg (see `scratchpad/qa/record.mjs`): sign in as the Student demo
-role, dismiss the product tour, glide the page down and back so the clip starts
-and ends at scrollTop 0 and loops seamlessly, then encode at 1200px / 24fps /
-crf 27.
+`public/platform/gif/NN.webp` are **animated WebP** — an `<img>` that loops on
+its own, exactly like a GIF, with `NN-poster.webp` as the static first frame.
 
-Do not use GIF here. The same clip measures 78 KB as MP4 and 974 KB as GIF, at
-lower quality — twelve times the weight for a worse picture.
+Not a real `.gif`: measured on the same clip, GIF was **7.8 MB vs 0.85 MB**
+animated WebP, at 256 colours and lower framerate. Ten real GIFs would have put
+roughly 60 MB on the page.
 
-Each slide keeps its `image` as the poster, so first paint is a static screenshot
-and the clip fades in over it. `preload="none"` plus an in-view gate means
-nothing is fetched until the visitor approaches the gallery, and only the active
-slide plays.
+Not a `<video>` either — there are now zero video elements on the site.
+
+An animated image cannot be paused, so `Features.tsx` only mounts the animated
+file while its slide is the active one; every other slide shows its poster.
+One animation runs instead of ten, and nothing is fetched until the visitor
+reaches the gallery.
+
+To re-encode from new recordings:
+
+```bash
+ffmpeg -i number-NN.mp4 -vf "fps=10,scale=860:-2"   -c:v libwebp_anim -q:v 50 -loop 0 -an NN.webp
+ffmpeg -i number-NN.mp4 -vframes 1 -vf "scale=860:-2"   -c:v libwebp -q:v 72 NN-poster.webp
+```
+
+**Clip 04 is redacted.** The source recording shows an "Unlimited minutes —
+Staff account, not metered" card for its first ~5 seconds; that is internal
+state and should not appear publicly, so a boxblur is composited over that
+region while it is on screen. If you re-record slide 04 from a normal student
+account, drop the blur step.
 
 ---
 

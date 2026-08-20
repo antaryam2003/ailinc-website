@@ -12,8 +12,7 @@ import {
 } from "motion/react";
 import { useEffect, useRef, useState } from "react";
 import { AppWindow } from "@/components/ui/AppWindow";
-import { Eyebrow, TodoNote, WordReveal } from "@/components/ui/primitives";
-import { LogoMark } from "@/components/ui/Logo";
+import { Eyebrow, WordReveal } from "@/components/ui/primitives";
 import { features } from "@/content/site";
 import { asset } from "@/lib/site";
 import { cn } from "@/lib/utils";
@@ -170,31 +169,19 @@ function Header() {
         <WordReveal text={features.headlineAccent} gradient delay={0.1} />
       </h2>
       <p className="lede max-w-xl text-[1rem]">{features.sub}</p>
-      <TodoNote>{features.pendingNote}</TodoNote>
-    </div>
-  );
-}
-
-/** Stand-in for a feature whose screenshot has not been captured yet. */
-function PendingShot({ title }: { title: string }) {
-  return (
-    <div className="relative flex aspect-[16/10] flex-col items-center justify-center gap-4 bg-lilac/60">
-      <div className="dots absolute inset-0 opacity-50" aria-hidden />
-      <LogoMark className="relative h-9 w-auto opacity-80" id={`pending-${title}`} />
-      <div className="relative text-center">
-        <div className="text-[0.95rem] font-bold text-ink">{title}</div>
-        <div className="mt-1 text-[0.8125rem] text-muted">
-          Screenshot coming soon
-        </div>
-      </div>
     </div>
   );
 }
 
 /**
- * Still + looping clip. The still is the poster so first paint is instant and
- * identical to the static build; the clip fades in over it and plays only while
- * its slide is active, which keeps ten videos off the network and the decoder.
+ * Poster + animated WebP.
+ *
+ * These are animated images, not <video> elements — an <img> that loops on its
+ * own, exactly like a GIF, but roughly seven times lighter than a real GIF at
+ * better quality. Because an animated image cannot be paused, the animated file
+ * is only mounted while its slide is the active one; every other slide shows
+ * its static first frame. That keeps one animation running instead of ten, and
+ * keeps nine files off the network.
  */
 function SlideMedia({
   slide,
@@ -203,49 +190,33 @@ function SlideMedia({
   slide: (typeof SLIDES)[number];
   active: boolean;
 }) {
-  const videoRef = useRef<HTMLVideoElement>(null);
   const reduced = useReducedMotion();
   const [ready, setReady] = useState(false);
-  const wanted = active && !reduced && Boolean(slide.video);
+  const animate = active && !reduced && Boolean(slide.gif);
 
-  useEffect(() => {
-    const v = videoRef.current;
-    if (!v) return;
-    if (wanted) {
-      // load() is deferred to first activation via preload="none"
-      const play = v.play();
-      if (play) play.catch(() => {});
-    } else {
-      v.pause();
-      if (v.currentTime > 0) v.currentTime = 0;
-    }
-  }, [wanted]);
-
-  if (!slide.image) return <PendingShot title={slide.title} />;
-
+  // No reset needed when the slide deactivates: the <img> unmounts, and once
+  // this slide's file has decoded once it stays in cache, so remounting it at
+  // full opacity is correct rather than a flash.
   return (
     <div className="relative">
       <Image
         src={asset(slide.image)}
         alt={`${slide.title} — the AI Linc platform`}
-        width={2400}
-        height={1500}
+        width={860}
+        height={448}
         className="w-full"
-        sizes="(max-width: 1024px) 86vw, 36rem"
+        sizes="(max-width: 1024px) 86vw, 34rem"
       />
-      {slide.video && !reduced && (
-        <video
-          ref={videoRef}
-          src={asset(slide.video)}
-          muted
-          loop
-          playsInline
-          preload="none"
+      {animate && (
+        /* eslint-disable-next-line @next/next/no-img-element */
+        <img
+          src={asset(slide.gif) ?? undefined}
+          alt=""
           aria-hidden
-          onPlaying={() => setReady(true)}
+          onLoad={() => setReady(true)}
           className={cn(
-            "absolute inset-0 h-full w-full object-cover transition-opacity duration-700",
-            ready && wanted ? "opacity-100" : "opacity-0",
+            "absolute inset-0 h-full w-full object-cover transition-opacity duration-500",
+            ready ? "opacity-100" : "opacity-0",
           )}
         />
       )}
