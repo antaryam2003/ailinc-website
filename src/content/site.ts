@@ -119,7 +119,7 @@ export const three = {
 } as const;
 
 /* ---------------------------------------------------------------------------
- * 4. THE REVEAL — the split-door payoff
+ * 3b. THE REVEAL — the payoff behind the doors, inside the pinned Three track
  * ------------------------------------------------------------------------- */
 export const reveal = {
   kicker: "It starts",
@@ -129,7 +129,7 @@ export const reveal = {
 } as const;
 
 /* ---------------------------------------------------------------------------
- * 5. COURSE BUILDER — the memorable interaction
+ * 4. COURSE BUILDER — the memorable interaction
  * ---------------------------------------------------------------------------
  * A preview rendered on the page, not a live call to the real builder. The UI
  * says so, because implying otherwise would misrepresent the product.
@@ -196,7 +196,7 @@ export const builder = {
 } as const;
 
 /* ---------------------------------------------------------------------------
- * 6. PLATFORM — real screens, horizontal gallery
+ * 5. PLATFORM — real screens, horizontal gallery
  * ------------------------------------------------------------------------- */
 export const features = {
   eyebrow: "See it in action",
@@ -288,7 +288,7 @@ export const features = {
 } as const;
 
 /* ---------------------------------------------------------------------------
- * 7. AUDIENCES — [BROCHURE] the two-sided platform
+ * 6. AUDIENCES — [BROCHURE] the two-sided platform
  * ------------------------------------------------------------------------- */
 export const audiences = {
   eyebrow: "Two sides, one platform",
@@ -342,7 +342,7 @@ export const audiences = {
 } as const;
 
 /* ---------------------------------------------------------------------------
- * 8. FAQ
+ * 7. FAQ
  * ------------------------------------------------------------------------- */
 export const faq = {
   eyebrow: "FAQ",
@@ -388,7 +388,7 @@ export const faq = {
 } as const;
 
 /* ---------------------------------------------------------------------------
- * 9. FINAL CTA
+ * 8. FINAL CTA
  * ------------------------------------------------------------------------- */
 export const finalCta = {
   headline: "Don't take another course.",

@@ -1,7 +1,6 @@
 import Hero from "@/components/sections/Hero";
 import TrustBar from "@/components/sections/TrustBar";
 import Three from "@/components/sections/Three";
-import DoorReveal from "@/components/sections/DoorReveal";
 import Builder from "@/components/sections/Builder";
 import Features from "@/components/sections/Features";
 import Audiences from "@/components/sections/Audiences";
@@ -14,13 +13,12 @@ import { faq } from "@/content/site";
  *
  *   1 HERO       AI Linc learns you before it teaches you  (+ prove it, live)
  *   2 TRUST      the numbers behind the claim
- *   3 THREE      personalize · AI teacher · create
- *   4 REVEAL     the doors part on "it starts with you"
- *   5 BUILDER    type a topic, watch a course appear
- *   6 PLATFORM   the real product, screen by screen
- *   7 AUDIENCES  learners on one side, institutions on the other
- *   8 FAQ
- *   9 CTA
+ *   3 THREE      the reel, then the doors part on "it starts with you"
+ *   4 BUILDER    type a topic, watch a course appear
+ *   5 PLATFORM   the real product, screen by screen
+ *   6 AUDIENCES  learners on one side, institutions on the other
+ *   7 FAQ
+ *   8 CTA
  *
  * Every section is downstream of one sentence: AI learns you, adapts to you,
  * teaches you, and lets you create. Copy that drifts back to "we offer AI
@@ -47,7 +45,6 @@ export default function Home() {
       <Hero />
       <TrustBar />
       <Three />
-      <DoorReveal />
       <Builder />
       <Features />
       <Audiences />
