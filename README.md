@@ -81,20 +81,30 @@ wording — implying they hit the real engine would misrepresent the product.
 
 ## The hero animation
 
-`public/platform/hero/f001..f040.webp` is a recording of the real dashboard,
-split into 40 frames and drawn to a canvas by `ui/ScrollSequence.tsx`. Scroll
-position selects the frame, so the clip advances as the visitor scrolls.
+`public/platform/hero/f001..f076.webp` — 76 frames at **1357x678, the source's
+native resolution**, drawn to a canvas by `ui/ScrollSequence.tsx`. Scroll
+position selects the frame.
 
-It is deliberately **not** a GIF and **not** a `<video>`:
-- a GIF runs on its own timeline and cannot be seeked, so scroll could not
-  drive it at all;
-- seeking a video on every scroll frame stutters badly on iOS Safari.
+Two things that matter if you re-encode:
 
-To replace it, re-encode a new recording with
-`ffmpeg -i clip.mp4 -vf "fps=5,scale=1000:-2" -c:v libwebp -q:v 62 f%03d.webp`
-and keep the frame count in sync with the `count` prop in `Hero.tsx`.
-Frame 1 loads first and alone so the hero paints immediately; the remaining 39
-stream in four at a time behind it.
+**Never upscale.** The canvas is displayed at ~1296 CSS px. Encoding frames
+smaller than that (an earlier pass used 1000px) means the browser upscales them
+and the result looks soft. Match or exceed the display width.
+
+**Frame count is smoothness.** The hero is roughly 1400px of scroll, so 76
+frames is one frame per ~18px. Forty frames read as steppy.
+
+```bash
+ffmpeg -i source.gif -vf "fps=12,scale=1357:-2"   -c:v libwebp -q:v 74 -compression_level 6 f%03d.webp
+```
+
+Keep `count`, `width` and `height` in `Hero.tsx` in sync with the output.
+
+At 3.5 MB the sequence is too big to block on, so the loader is coarse-to-fine:
+frame 1 alone at high fetch priority, then every 8th frame, then every 4th, 2nd
+and finally the rest. `draw()` falls back to the nearest already-decoded frame,
+so the full scroll range is scrubbable after roughly a tenth of the bytes and
+simply gets smoother as the rest lands.
 
 ---
 

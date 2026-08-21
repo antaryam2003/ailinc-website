@@ -84,6 +84,7 @@ export function ScrollSequence({
       new Promise<void>((resolve) => {
         const img = new Image();
         img.decoding = "async";
+        if (i === 0) img.fetchPriority = "high";
         img.src = src(i);
         img.onload = () => {
           if (cancelled) return resolve();
@@ -98,12 +99,29 @@ export function ScrollSequence({
         img.onerror = () => resolve();
       });
 
+    /**
+     * Interleaved, coarse-to-fine. Loading 1..N in order would mean the back
+     * half of the scroll has nothing to draw until almost everything has
+     * arrived. Instead: every 8th frame, then every 4th, then every 2nd, then
+     * the rest — so the whole scroll range is scrubbable after roughly a tenth
+     * of the bytes, and simply gets smoother as the rest lands. draw() already
+     * falls back to the nearest loaded frame, which is what makes this work.
+     */
+    const order: number[] = [];
+    const seen = new Set<number>();
+    for (const step of [8, 4, 2, 1]) {
+      for (let i = 0; i < count; i += step) {
+        if (!seen.has(i)) {
+          seen.add(i);
+          order.push(i);
+        }
+      }
+    }
+
     // Frame 1 first and alone, so the hero paints as fast as a single image.
     load(0).then(async () => {
-      // Then the rest, a few at a time — a 40-way parallel burst would fight
-      // the fonts and the rest of the page for bandwidth.
-      const queue = Array.from({ length: count - 1 }, (_, k) => k + 1);
-      const workers = 4;
+      const queue = order.filter((i) => i !== 0);
+      const workers = 6;
       await Promise.all(
         Array.from({ length: workers }, async () => {
           while (queue.length && !cancelled) {

@@ -189,10 +189,10 @@ export default function Hero() {
             <AppWindow>
               <ScrollSequence
                 progress={seqEased}
-                count={40}
+                count={76}
                 path="/platform/hero"
-                width={1000}
-                height={572}
+                width={1357}
+                height={678}
                 alt="The AI Linc student dashboard — AI briefing, today's goal, skill profile and course readiness"
               />
             </AppWindow>
