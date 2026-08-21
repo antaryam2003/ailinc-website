@@ -100,8 +100,8 @@ export const three = {
         "Debugs your errors and says why",
         "AI-generated videos for tough concepts",
       ],
-      image: "/platform/dashboard.webp",
-      gif: null as string | null,
+      image: "/platform/three/02-poster.webp",
+      gif: "/platform/three/02.webp" as string | null,
     },
     {
       num: "03",
@@ -115,8 +115,8 @@ export const three = {
         "Auto-evaluation — no human grading",
         "Publish-ready in a single click",
       ],
-      image: "/platform/courses.webp",
-      gif: null as string | null,
+      image: "/platform/three/03-poster.webp",
+      gif: "/platform/three/03.webp" as string | null,
     },
   ],
 } as const;
