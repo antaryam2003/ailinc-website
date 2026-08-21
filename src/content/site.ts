@@ -119,7 +119,17 @@ export const three = {
 } as const;
 
 /* ---------------------------------------------------------------------------
- * 4. COURSE BUILDER — the memorable interaction
+ * 4. THE REVEAL — the split-door payoff
+ * ------------------------------------------------------------------------- */
+export const reveal = {
+  kicker: "It starts",
+  accent: "with you.",
+  body: "AI Linc first understands what you know, where you're struggling and what you're trying to achieve. Everything after that — the content you see, the difficulty you face, the projects you build — is shaped around that answer.",
+  cta: { label: "See what that unlocks", href: "#builder" },
+} as const;
+
+/* ---------------------------------------------------------------------------
+ * 5. COURSE BUILDER — the memorable interaction
  * ---------------------------------------------------------------------------
  * A preview rendered on the page, not a live call to the real builder. The UI
  * says so, because implying otherwise would misrepresent the product.
@@ -186,7 +196,7 @@ export const builder = {
 } as const;
 
 /* ---------------------------------------------------------------------------
- * 5. PLATFORM — real screens, horizontal gallery
+ * 6. PLATFORM — real screens, horizontal gallery
  * ------------------------------------------------------------------------- */
 export const features = {
   eyebrow: "See it in action",
@@ -278,7 +288,7 @@ export const features = {
 } as const;
 
 /* ---------------------------------------------------------------------------
- * 6. AUDIENCES — [BROCHURE] the two-sided platform
+ * 7. AUDIENCES — [BROCHURE] the two-sided platform
  * ------------------------------------------------------------------------- */
 export const audiences = {
   eyebrow: "Two sides, one platform",
@@ -332,7 +342,7 @@ export const audiences = {
 } as const;
 
 /* ---------------------------------------------------------------------------
- * 7. FAQ
+ * 8. FAQ
  * ------------------------------------------------------------------------- */
 export const faq = {
   eyebrow: "FAQ",
@@ -378,7 +388,7 @@ export const faq = {
 } as const;
 
 /* ---------------------------------------------------------------------------
- * 8. FINAL CTA
+ * 9. FINAL CTA
  * ------------------------------------------------------------------------- */
 export const finalCta = {
   headline: "Don't take another course.",

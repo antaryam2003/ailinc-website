@@ -49,11 +49,12 @@ Copy that drifts back to "we offer AI courses" is off-positioning.
 | 1   | Hero + interactive level demo    | `sections/Hero.tsx` + `LevelDemo.tsx` |
 | 2   | Trust — brochure figures         | `sections/TrustBar.tsx`     |
 | 3   | Three differentiators            | `sections/Three.tsx`        |
-| 4   | Course builder (interactive)     | `sections/Builder.tsx`      |
-| 5   | The real platform (gallery)      | `sections/Features.tsx`     |
-| 6   | Learners / institutions          | `sections/Audiences.tsx`    |
-| 7   | FAQ                              | `sections/FAQ.tsx`          |
-| 8   | Final CTA                        | `sections/FinalCTA.tsx`     |
+| 4   | The reveal (split doors)         | `sections/DoorReveal.tsx`   |
+| 5   | Course builder (interactive)     | `sections/Builder.tsx`      |
+| 6   | The real platform (gallery)      | `sections/Features.tsx`     |
+| 7   | Learners / institutions          | `sections/Audiences.tsx`    |
+| 8   | FAQ                              | `sections/FAQ.tsx`          |
+| 9   | Final CTA                        | `sections/FinalCTA.tsx`     |
 
 Positioning and figures come from `AI_LINC_Carousel_Final.pdf` (the brochure) —
 50,000+ learners, 1,000+ courses, 50+ universities, white-label ready, and the
@@ -171,6 +172,7 @@ back to static grids and a plain swipe carousel.
 | 3D scroll tilt             | hero dashboard       | `rotateX` 26°→0 driven by scroll          |
 | Scroll-scrubbed dashboard  | hero                 | 40-frame WebP sequence drawn to canvas; scroll position selects the frame |
 | Drifting mesh blobs        | most sections        | CSS `drift-a/b/c` keyframes               |
+| Split-door reveal          | The reveal           | panel halves part from the centre, the payoff emerges behind |
 | Pinned horizontal gallery  | Features             | scroll → `translateX`, distance measured from DOM |
 | Looping product clips      | Features             | silent MP4 over its own still; only the active slide loads and plays |
 | Cursor spotlight cards     | Why AI Linc          | `SpotlightCard` — radial glow at pointer   |
