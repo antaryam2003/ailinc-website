@@ -3,13 +3,14 @@
 import Image from "next/image";
 import {
   motion,
+  useMotionValueEvent,
   useReducedMotion,
   useScroll,
   useSpring,
   useTransform,
   type MotionValue,
 } from "motion/react";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { AppWindow } from "@/components/ui/AppWindow";
 import { LogoMark } from "@/components/ui/Logo";
 import {
@@ -47,11 +48,14 @@ function Panel({
   item,
   index,
   p,
+  active,
 }: {
   item: (typeof ITEMS)[number];
   index: number;
   p: MotionValue<number>;
+  active: boolean;
 }) {
+  const [ready, setReady] = useState(false);
   const d = useTransform(p, (v) => index - v);
   const y = useTransform(d, (v) => `${v * 62}%`);
   const opacity = useTransform(d, (v) => Math.max(0, 1 - Math.abs(v) * 1.25));
@@ -101,14 +105,40 @@ function Panel({
         {/* ---- proof ---- */}
         <div className="hidden lg:block">
           <AppWindow compact>
-            <Image
-              src={asset(item.image)}
-              alt={`${item.title} — the AI Linc platform`}
-              width={2400}
-              height={1500}
-              className="w-full"
-              sizes="34rem"
-            />
+            {/* Poster underneath, animated WebP over it — the same arrangement
+                the feature gallery uses. An animated image cannot be paused, so
+                it is only mounted while this panel is the one being read; the
+                other two panels are blurred out of the way at that point. */}
+            <div className="relative">
+              <Image
+                src={asset(item.image)}
+                alt={`${item.title} — the AI Linc platform`}
+                width={2400}
+                height={1500}
+                className="w-full"
+                sizes="34rem"
+              />
+              {item.gif && active && (
+                /* eslint-disable-next-line @next/next/no-img-element */
+                <img
+                  src={asset(item.gif) ?? undefined}
+                  alt=""
+                  aria-hidden
+                  /* Panel 01 is the active one at rest, so without this the
+                     clip is in the first paint's markup and React emits a
+                     <link rel="preload"> for it — 0.8 MB at high priority for
+                     a section several screens down. Lazy defers the fetch and
+                     drops the preload. */
+                  loading="lazy"
+                  decoding="async"
+                  onLoad={() => setReady(true)}
+                  className={cn(
+                    "absolute inset-0 h-full w-full object-cover transition-opacity duration-500",
+                    ready ? "opacity-100" : "opacity-0",
+                  )}
+                />
+              )}
+            </div>
           </AppWindow>
         </div>
       </div>
@@ -117,7 +147,7 @@ function Panel({
 }
 
 /** The door face: heading above, the reel below. Rendered once per door. */
-function Stage({ p }: { p: MotionValue<number> }) {
+function Stage({ p, active }: { p: MotionValue<number>; active: number }) {
   return (
     <div className="absolute inset-0 flex flex-col px-5 pt-24 pb-10 sm:px-8">
       <div className="mx-auto w-full max-w-[78rem] shrink-0">
@@ -129,7 +159,7 @@ function Stage({ p }: { p: MotionValue<number> }) {
 
       <div className="relative mx-auto mt-4 w-full max-w-[78rem] flex-1">
         {ITEMS.map((item, i) => (
-          <Panel key={item.key} item={item} index={i} p={p} />
+          <Panel key={item.key} item={item} index={i} p={p} active={i === active} />
         ))}
       </div>
     </div>
@@ -203,6 +233,13 @@ export default function Three() {
     clamp: true,
   });
   const p = useSpring(raw, { stiffness: 110, damping: 26, restDelta: 0.001 });
+
+  // Which panel is being read, so only that one mounts its animated clip.
+  const [active, setActive] = useState(0);
+  useMotionValueEvent(p, "change", (v) => {
+    const i = Math.round(v);
+    if (i !== active) setActive(i);
+  });
 
   /* -- phase 2: the doors ------------------------------------------------- */
   const doorRaw = useTransform(scrollYProgress, [0.58, 0.84], [0, 1], { clamp: true });
@@ -339,7 +376,7 @@ export default function Three() {
           {/* 200% of a half-width door === full container width */}
           <div className="absolute inset-y-0 left-0 w-[200%]">
             <div className="dots absolute inset-0 opacity-40" aria-hidden />
-            <Stage p={p} />
+            <Stage p={p} active={active} />
           </div>
           <motion.span
             aria-hidden
@@ -360,7 +397,7 @@ export default function Three() {
         >
           <div className="absolute inset-y-0 right-0 w-[200%]">
             <div className="dots absolute inset-0 opacity-40" aria-hidden />
-            <Stage p={p} />
+            <Stage p={p} active={active} />
           </div>
           <motion.span
             aria-hidden

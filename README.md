@@ -138,6 +138,37 @@ account, drop the blur step.
 
 ---
 
+## The reel clip
+
+`public/platform/three/01.webp` is the animated clip in reel panel 01, same
+idea as the gallery clips: an animated WebP over a static first frame, mounted
+only while that panel is the active one.
+
+Two things differ from the recipe above.
+
+**It was encoded with sharp, not ffmpeg** — the machine it was made on had no
+ffmpeg, and `sharp` is already present as a Next dependency. The script lives
+in scratch, but the shape of it is: read the GIF a page at a time
+(`{ page: i, limitInputPixels: false }` — an animated GIF reads as one tall
+strip and trips the pixel limit), keep every 3rd frame to go 30fps → 10fps,
+then `sharp(frames, { join: { animated: true } }).webp({ quality: 50, delay: 100, loop: 0 })`.
+The source GIF was 9.07 MB; the result is 0.82 MB. libwebp merges identical
+frames into longer delays, so the frame count drops but the duration does not.
+
+**It is letterboxed to 864x540.** The recording is 1330x692 (ratio 1.924) and
+the other two panels are 2400x1500 (ratio 1.600). Unpadded, panel 01's window
+is a different height from 02 and 03 and the reel changes shape as items swap.
+Cropping to 1.600 instead would cut ~72px off each side, through the buttons at
+the right edge. The pad colour `rgb(252,251,252)` is sampled from the
+recording's own page background, so the bands do not read as bands.
+
+**The animated `<img>` needs `loading="lazy"`.** Panel 01 is the active item at
+rest, so the clip is in the first paint's markup and React emits a
+`<link rel="preload">` for it — 0.8 MB at high priority for a section several
+screens down. Lazy defers the fetch and drops the preload.
+
+---
+
 ## The screenshots are real
 
 Every product image in `public/platform/` is a genuine 2×-retina capture of the

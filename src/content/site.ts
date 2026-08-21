@@ -86,7 +86,8 @@ export const three = {
         "AI articles re-explain in simpler words",
         "Built-in IDE — run and submit code instantly",
       ],
-      image: "/platform/course-detail.webp",
+      image: "/platform/three/01-poster.webp",
+      gif: "/platform/three/01.webp" as string | null,
     },
     {
       num: "02",
@@ -100,6 +101,7 @@ export const three = {
         "AI-generated videos for tough concepts",
       ],
       image: "/platform/dashboard.webp",
+      gif: null as string | null,
     },
     {
       num: "03",
@@ -114,6 +116,7 @@ export const three = {
         "Publish-ready in a single click",
       ],
       image: "/platform/courses.webp",
+      gif: null as string | null,
     },
   ],
 } as const;
