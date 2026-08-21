@@ -47,10 +47,6 @@ export const hero = {
   sub: "AI-powered learning that adapts to what you already know, teaches what you need next, and lets you build the courses and projects you actually want.",
   primary: { label: "Experience AI Linc", href: brand.platformUrl },
   secondary: { label: "See how it works", href: "#idea" },
-  audience: [
-    { label: "I'm a learner", href: "#audiences" },
-    { label: "I'm an institution", href: "#audiences" },
-  ],
 
 } as const;
 
@@ -132,7 +128,6 @@ export const three = {
       key: "personalize",
       kicker: "Personalize",
       title: "The course changes with you.",
-      body: "Don't know something? The AI goes deeper and re-explains it in simpler words. Already know it? It moves you forward instead of making you sit through it.",
       /** [BROCHURE] adaptive learning engine */
       points: [
         "Wrong answer → difficulty drops automatically",
@@ -147,7 +142,6 @@ export const three = {
       key: "teach",
       kicker: "AI Teacher",
       title: "Your teacher is always there.",
-      body: "Not a chatbot bolted onto a video player. A tutor that teaches out loud, puts the material on screen as it explains, and lets you interrupt mid-sentence.",
       points: [
         "Ask, discuss, interrupt, practise",
         "Explains your own code back to you",
@@ -161,7 +155,6 @@ export const three = {
       key: "create",
       kicker: "Create",
       title: "Don't find a course. Create one.",
-      body: "Type what you want to learn. AI Linc generates the whole thing — modules, videos, quizzes, projects and rubrics. No subject-matter expert required.",
       /** [BROCHURE] AI Course Builder */
       points: [
         "Title + duration + difficulty → full course",
@@ -184,7 +177,6 @@ export const builder = {
   eyebrow: "Try it",
   headline: "What do you want",
   headlineAccent: "to learn?",
-  sub: "Type anything. This is a preview of what the AI Course Builder does inside the platform.",
   placeholder: "e.g. AI agents for finance",
   cta: "Build it",
   generating: "Generating your course",
@@ -255,7 +247,6 @@ export const features = {
       id: "dashboard",
       num: "01",
       title: "AI knows what you know",
-      body: "Open the app and it tells you where you actually are — progress, streak, weakest skill, and the one thing worth doing today.",
       image: "/platform/gif/01-poster.webp" as string | null,
       gif: "/platform/gif/01.webp" as string | null,
       tags: ["Skill profile", "Daily focus", "Streaks"],
@@ -264,7 +255,6 @@ export const features = {
       id: "courses",
       num: "02",
       title: "AI changes what you learn next",
-      body: "A calibration assessment sets your baseline, then difficulty, reading tier and pacing reshape around it — in real time, after every answer.",
       image: "/platform/gif/02-poster.webp" as string | null,
       gif: "/platform/gif/02.webp" as string | null,
       tags: ["Calibration", "Adaptive difficulty", "Instant feedback"],
@@ -273,7 +263,6 @@ export const features = {
       id: "roadmaps",
       num: "03",
       title: "Roadmaps you can follow — or build",
-      body: "Pick a role, skill or company-based path and follow it. Every step is a verified topic you can practise and be scored on — and clicking a topic generates a full course for it.",
       image: "/platform/gif/03-poster.webp" as string | null,
       gif: "/platform/gif/03.webp" as string | null,
       tags: ["Role, skill & company paths", "Build your own", "Topic → course"],
@@ -282,7 +271,6 @@ export const features = {
       id: "ai-tutor",
       num: "04",
       title: "AI teaches you in real time",
-      body: "Say what you want to learn and talk it through out loud. The tutor listens, answers in voice, and puts the material on screen as it explains.",
       image: "/platform/gif/04-poster.webp" as string | null,
       gif: "/platform/gif/04.webp" as string | null,
       tags: ["Two-way voice", "Shows as it explains", "Interrupt anytime"],
@@ -291,7 +279,6 @@ export const features = {
       id: "assessments",
       num: "05",
       title: "Proctored assessments",
-      body: "Face detection, tab-switch flagging and fullscreen enforcement, with topic-wise scoring and skill-gap analysis baked in.",
       image: "/platform/gif/05-poster.webp" as string | null,
       gif: "/platform/gif/05.webp" as string | null,
       tags: ["Zero plagiarism", "Skill-gap reports", "Institution-grade"],
@@ -300,7 +287,6 @@ export const features = {
       id: "mock-interview",
       num: "06",
       title: "Interview like it's real",
-      body: "AI asks, evaluates, scores and gives feedback — role-specific questions, speech recognition, per-question scoring. Unlimited rounds.",
       image: "/platform/gif/06-poster.webp" as string | null,
       gif: "/platform/gif/06.webp" as string | null,
       tags: ["Live proctoring", "Instant scoring", "Unlimited sessions"],
@@ -309,7 +295,6 @@ export const features = {
       id: "jobs",
       num: "07",
       title: "Every job, just for you",
-      body: "LinkedIn, Naukri, Indeed, Internshala and Glassdoor scraped into one feed and matched to the skills you have actually demonstrated.",
       image: "/platform/gif/07-poster.webp" as string | null,
       gif: "/platform/gif/07.webp" as string | null,
       tags: ["Auto-matched", "Course-aware", "Zero manual searching"],
@@ -318,7 +303,6 @@ export const features = {
       id: "resume",
       num: "08",
       title: "Resume built by AI",
-      body: "Auto-built from your courses, profile and certifications, with an ATS score and a job-description compatibility check.",
       image: "/platform/gif/08-poster.webp" as string | null,
       gif: "/platform/gif/08.webp" as string | null,
       tags: ["ATS score", "Multiple templates", "Real-time suggestions"],
@@ -327,7 +311,6 @@ export const features = {
       id: "live-sessions",
       num: "09",
       title: "Live sessions and mentorship",
-      body: "Cohort classes and office hours run inside the platform, recorded and tied back to your timeline.",
       image: "/platform/gif/09-poster.webp" as string | null,
       gif: "/platform/gif/09.webp" as string | null,
       tags: ["Live classes", "Recorded", "Mentors"],
@@ -336,7 +319,6 @@ export const features = {
       id: "community",
       num: "10",
       title: "A community the AI keeps alive",
-      body: "AI sparks discussions, answers doubts and nudges learners to think — engagement that compounds instead of dying after week two.",
       image: "/platform/gif/10-poster.webp" as string | null,
       gif: "/platform/gif/10.webp" as string | null,
       tags: ["AI-led prompts", "Doubt solving", "Peers + alumni"],

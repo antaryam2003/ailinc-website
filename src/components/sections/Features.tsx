@@ -246,7 +246,6 @@ function Slide({
         <h3 className="headline mt-5 text-[clamp(1.4rem,2.6vw,2rem)]">
           {slide.title}
         </h3>
-        <p className="lede mt-3 text-[0.9688rem]">{slide.body}</p>
         <div className="mt-5 flex flex-wrap gap-2">
           {slide.tags.map((t) => (
             <span

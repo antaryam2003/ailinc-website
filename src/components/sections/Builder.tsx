@@ -86,10 +86,6 @@ export default function Builder() {
           <WordReveal text={builder.headlineAccent} gradient delay={0.1} />
         </h2>
 
-        <Reveal delay={0.15}>
-          <p className="lede mt-5 max-w-xl text-[1.0125rem]">{builder.sub}</p>
-        </Reveal>
-
         {/* ---------------- the console ---------------- */}
         <Reveal delay={0.2} className="w-full">
           <div className="panel relative mt-10 overflow-hidden text-left">

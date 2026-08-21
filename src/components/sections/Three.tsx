@@ -55,11 +55,7 @@ function Row({
           </h3>
         </Reveal>
 
-        <Reveal delay={0.12}>
-          <p className="lede mt-4 text-[1.0125rem]">{item.body}</p>
-        </Reveal>
-
-        <ul className="mt-6 grid gap-2 sm:grid-cols-2">
+        <ul className="mt-7 grid gap-2 sm:grid-cols-2">
           {item.points.map((p, i) => (
             <Reveal key={p} delay={0.16 + i * 0.05}>
               <li className="flex items-start gap-2.5 rounded-lg border border-line bg-surface px-3.5 py-2.5 text-[0.8438rem] text-body">

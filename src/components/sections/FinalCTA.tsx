@@ -69,11 +69,6 @@ export default function FinalCTA() {
           </div>
         </Reveal>
 
-        <Reveal delay={0.36}>
-          <p className="mt-7 text-[0.8125rem] text-muted">
-            Full platform demo, every module unlocked — no credit card.
-          </p>
-        </Reveal>
       </div>
     </section>
   );

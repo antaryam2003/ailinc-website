@@ -2,7 +2,6 @@
 
 import { motion, useMotionValue, useScroll, useSpring, useTransform } from "motion/react";
 import { useEffect, useRef } from "react";
-import Link from "next/link";
 import { AppWindow } from "@/components/ui/AppWindow";
 import { ScrollSequence } from "@/components/ui/ScrollSequence";
 import { Button, WordReveal } from "@/components/ui/primitives";
@@ -151,28 +150,6 @@ export default function Hero() {
             </Button>
           </motion.div>
 
-          {/* two-sided platform, surfaced immediately */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
-            className="mt-7 flex items-center gap-2 text-[0.8125rem]"
-          >
-            {hero.audience.map((a, i) => (
-              <span key={a.label} className="flex items-center gap-2">
-                {i > 0 && <span className="text-faint">·</span>}
-                <Link
-                  href={a.href}
-                  className="group inline-flex items-center gap-1 font-medium text-body transition-colors hover:text-violet"
-                >
-                  {a.label}
-                  <span className="transition-transform duration-300 group-hover:translate-x-0.5">
-                    →
-                  </span>
-                </Link>
-              </span>
-            ))}
-          </motion.div>
         </div>
 
         {/* ------------------- interactive proof ------------------- */}
