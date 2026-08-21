@@ -30,7 +30,7 @@ export const brand = {
  * ------------------------------------------------------------------------- */
 export const nav = {
   links: [
-    { label: "How it works", href: "#idea" },
+    { label: "How it works", href: "#three" },
     { label: "Platform", href: "#platform" },
     { label: "For learners", href: "#audiences" },
     { label: "For institutions", href: "#audiences" },
@@ -46,7 +46,7 @@ export const hero = {
   headline: { line1: "AI Linc learns you", line2: "before it teaches you." },
   sub: "AI-powered learning that adapts to what you already know, teaches what you need next, and lets you build the courses and projects you actually want.",
   primary: { label: "Experience AI Linc", href: brand.platformUrl },
-  secondary: { label: "See how it works", href: "#idea" },
+  secondary: { label: "See how it works", href: "#three" },
 
 } as const;
 
@@ -67,56 +67,7 @@ export const trust = {
 } as const;
 
 /* ---------------------------------------------------------------------------
- * 3. THE IDEA — pinned reel, then the split-door reveal
- * ------------------------------------------------------------------------- */
-export const idea = {
-  eyebrow: "How AI Linc thinks",
-  headline: "AI Linc doesn't start",
-  headlineAccent: "with a course.",
-  steps: [
-    {
-      num: "01",
-      name: "Assess",
-      title: "It measures where you actually are",
-      body: "A calibration assessment before anything is recommended.",
-      detail:
-        "Not a form asking how confident you feel. A real assessment that finds the edge of what you know.",
-    },
-    {
-      num: "02",
-      name: "Understand",
-      title: "It builds a model of you",
-      body: "Strengths, gaps and goals, held as a live profile.",
-      detail:
-        "Every quiz, task and interview updates it. The platform always knows which topic is your weakest right now.",
-    },
-    {
-      num: "03",
-      name: "Adapt",
-      title: "The course changes for you",
-      body: "Wrong answer? Easier next. Right answer? Harder.",
-      detail:
-        "Difficulty, reading level and sequencing all move around your profile — in real time, not at the end of a module.",
-    },
-    {
-      num: "04",
-      name: "Teach",
-      title: "Then it actually teaches",
-      body: "An AI tutor that explains, quizzes and debugs with you.",
-      detail:
-        "Ask, discuss, interrupt, practise, get feedback. It re-explains in simpler words when you are stuck.",
-    },
-  ],
-  reveal: {
-    kicker: "It starts",
-    accent: "with you.",
-    body: "AI Linc first understands what you know, where you're struggling and what you're trying to achieve. Everything after that — the content you see, the difficulty you face, the projects you build — is shaped around that answer.",
-    cta: { label: "See what that unlocks", href: "#three" },
-  },
-} as const;
-
-/* ---------------------------------------------------------------------------
- * 4. THREE THINGS — the ownable differentiators
+ * 3. THREE THINGS — the ownable differentiators
  * ------------------------------------------------------------------------- */
 export const three = {
   eyebrow: "Three things nobody else does this way",
@@ -168,7 +119,7 @@ export const three = {
 } as const;
 
 /* ---------------------------------------------------------------------------
- * 5. COURSE BUILDER — the memorable interaction
+ * 4. COURSE BUILDER — the memorable interaction
  * ---------------------------------------------------------------------------
  * A preview rendered on the page, not a live call to the real builder. The UI
  * says so, because implying otherwise would misrepresent the product.
@@ -235,7 +186,7 @@ export const builder = {
 } as const;
 
 /* ---------------------------------------------------------------------------
- * 6. PLATFORM — real screens, horizontal gallery
+ * 5. PLATFORM — real screens, horizontal gallery
  * ------------------------------------------------------------------------- */
 export const features = {
   eyebrow: "See it in action",
@@ -327,7 +278,7 @@ export const features = {
 } as const;
 
 /* ---------------------------------------------------------------------------
- * 7. AUDIENCES — [BROCHURE] the two-sided platform
+ * 6. AUDIENCES — [BROCHURE] the two-sided platform
  * ------------------------------------------------------------------------- */
 export const audiences = {
   eyebrow: "Two sides, one platform",
@@ -381,7 +332,7 @@ export const audiences = {
 } as const;
 
 /* ---------------------------------------------------------------------------
- * 8. FAQ
+ * 7. FAQ
  * ------------------------------------------------------------------------- */
 export const faq = {
   eyebrow: "FAQ",
@@ -427,7 +378,7 @@ export const faq = {
 } as const;
 
 /* ---------------------------------------------------------------------------
- * 9. FINAL CTA
+ * 8. FINAL CTA
  * ------------------------------------------------------------------------- */
 export const finalCta = {
   headline: "Don't take another course.",
@@ -447,7 +398,7 @@ export const footer = {
     {
       title: "Product",
       links: [
-        { label: "How it works", href: "#idea" },
+        { label: "How it works", href: "#three" },
         { label: "The platform", href: "#platform" },
         { label: "Build a course", href: "#builder" },
         { label: "Live demo", href: brand.platformUrl },
