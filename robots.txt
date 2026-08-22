@@ -1,0 +1,4 @@
+User-Agent: *
+Allow: /
+
+Sitemap: https://antaryam2003.github.io/ailinc-website/sitemap.xml

@@ -1,0 +1,32 @@
+1:"$Sreact.fragment"
+2:I[33903,["/ailinc-website/_next/static/chunks/1znrvuesihb1y.js","/ailinc-website/_next/static/chunks/0o-9vhbo3mhyj.js"],"Button"]
+3:I[97367,["/ailinc-website/_next/static/chunks/0h2qsuyze9ds1.js"],"OutletBoundary"]
+4:"$Sreact.suspense"
+8:I[97367,["/ailinc-website/_next/static/chunks/0h2qsuyze9ds1.js"],"ViewportBoundary"]
+9:I[97367,["/ailinc-website/_next/static/chunks/0h2qsuyze9ds1.js"],"MetadataBoundary"]
+7:X
+17:X
+17:C
+0:{"buildId":"KPfrN1Xk-GLeRcQOtnm76","data":[{"rsc":["$","$1","c",{"children":[["$","div",null,{"className":"relative flex min-h-[82vh] items-center justify-center overflow-hidden px-5 py-32","children":[["$","div",null,{"className":"pointer-events-none absolute inset-0 -z-10","aria-hidden":true,"children":[["$","div",null,{"className":"grid-lines absolute inset-0"}],["$","div",null,{"className":"blob drift-a top-[-15%] left-1/2 h-[32rem] w-[32rem] -translate-x-1/2 opacity-40","style":{"background":"radial-gradient(circle, rgba(168,85,247,0.5), rgba(168,85,247,0) 68%)"}}]]}],["$","div",null,{"className":"flex flex-col items-center text-center","children":[["$","svg",null,{"viewBox":"85 -8 300 256","className":"shrink-0 h-10 w-auto","role":"img","aria-label":"AI Linc","children":[["$","defs",null,{"children":["$","linearGradient",null,{"id":"nf-logo","x1":"100","y1":"10","x2":"365","y2":"230","gradientUnits":"userSpaceOnUse","children":[["$","stop",null,{"offset":"0","stopColor":"#7C3AED"}],["$","stop",null,{"offset":"0.55","stopColor":"#A855F7"}],["$","stop",null,{"offset":"1","stopColor":"#EC4899"}]]}]}],["$","g",null,{"transform":"rotate(-7 200 120)","children":["$","path",null,{"d":"M 200 120 C 150 48.5, 105 48.5, 100 120 C 95 191.5, 150 191.5, 200 120 C 282.5 10, 356.75 10, 365 120 C 373.25 230, 282.5 230, 200 120 Z M 200 120 C 164 69, 129.6 69, 126 120 C 122.4 171, 164 171, 200 120 C 268.5 34, 332.15 34, 339 120 C 345.85 206, 268.5 206, 200 120 Z","fill":"url(#nf-logo)","fillRule":"evenodd"}]}]]}],["$","p",null,{"className":"eyebrow mt-8","children":"Error 404"}],["$","h1",null,{"className":"display mt-4 text-[clamp(2.25rem,6vw,4rem)]","children":["This page isn't ",["$","span",null,{"className":"text-grad","children":"on the path."}]]}],["$","p",null,{"className":"lede mt-5 max-w-md","children":"The link is broken or the page has moved. The platform itself is always one click away."}],["$","div",null,{"className":"mt-10 flex flex-col gap-3 sm:flex-row","children":[["$","$L2",null,{"href":"/","magnetic":true,"children":"Back to the homepage"}],["$","$L2",null,{"href":"https://tour.ailinc.com","variant":"outline","magnetic":true,"children":"Experience AI Linc"}]]}]]}]]}],null,["$","$L3",null,{"children":["$","$4",null,{"name":"Next.MetadataOutlet","children":"$@5"}]}]]}],"isPartial":"$@6","staleTime":"$7","varyParams":null},{"rsc":["$","$1","h",{"children":[["$","meta",null,{"name":"robots","content":"noindex"}],["$","$L8",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","meta","2",{"name":"theme-color","content":"#f7f6fb"}],["$","meta","3",{"name":"color-scheme","content":"light"}]]}],["$","div",null,{"hidden":true,"children":["$","$L9",null,{"children":["$","$4",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"AI Linc — Don't just learn AI. Build with it."}],["$","meta","1",{"name":"description","content":"Learn, build and master real-world AI through hands-on projects, expert guidance and an AI-powered learning platform. Adaptive courses, AI mock interviews, live mentorship and a matched job board."}],["$","meta","2",{"name":"keywords","content":"AI learning platform,learn AI,AI courses India,AI mock interview,adaptive learning,AI bootcamp"}],["$","meta","3",{"name":"robots","content":"index, follow"}],["$","meta","4",{"property":"og:title","content":"AI Linc — Don't just learn AI. Build with it."}],["$","meta","5",{"property":"og:description","content":"An AI-native learning platform: adaptive courses, real projects, AI mock interviews and the jobs that follow."}],["$","meta","6",{"property":"og:site_name","content":"AI Linc"}],["$","meta","7",{"property":"og:locale","content":"en_IN"}],["$","meta","8",{"property":"og:image","content":"https://antaryam2003.github.io/ailinc-website/opengraph-image?ddfa1d521e5fc27b"}],["$","meta","9",{"property":"og:image:type","content":"image/png"}],["$","meta","10",{"property":"og:image:width","content":"1200"}],["$","meta","11",{"property":"og:image:height","content":"630"}],["$","meta","12",{"property":"og:image:alt","content":"AI Linc — Don't just learn AI. Build with it."}],["$","meta","13",{"property":"og:type","content":"website"}],["$","meta","14",{"name":"twitter:card","content":"summary_large_image"}],"$La","$Lb","$Lc","$Ld","$Le","$Lf","$L10","$L11","$L12"]}]}]}],"$L13"]}],"isPartial":"$@14","staleTime":"$7","varyParams":null},{"rsc":"$L15","isPartial":"$@16","staleTime":"$7","varyParams":"$17"}],"isUpgradeableISRFallback":false,"a":"$@18","rootVaryParams":null,"needsRuntimeRequest":"$@19"}
+1a:I[27201,["/ailinc-website/_next/static/chunks/0h2qsuyze9ds1.js"],"IconMark"]
+1b:I[39756,["/ailinc-website/_next/static/chunks/0h2qsuyze9ds1.js"],"default"]
+1c:I[37457,["/ailinc-website/_next/static/chunks/0h2qsuyze9ds1.js"],"default"]
+5:null
+a:["$","meta","15",{"name":"twitter:title","content":"AI Linc — Don't just learn AI. Build with it."}]
+b:["$","meta","16",{"name":"twitter:description","content":"Adaptive courses, real projects, AI mock interviews and a matched job board — in one platform."}]
+c:["$","meta","17",{"name":"twitter:image","content":"https://antaryam2003.github.io/ailinc-website/opengraph-image?ddfa1d521e5fc27b"}]
+d:["$","meta","18",{"name":"twitter:image:alt","content":"AI Linc — Don't just learn AI. Build with it."}]
+e:["$","meta","19",{"name":"twitter:image:type","content":"image/png"}]
+f:["$","meta","20",{"name":"twitter:image:width","content":"1200"}]
+10:["$","meta","21",{"name":"twitter:image:height","content":"630"}]
+11:["$","link","22",{"rel":"icon","href":"/ailinc-website/icon.svg?icon.3bl5dv9zwut09.svg","sizes":"any","type":"image/svg+xml"}]
+12:["$","$L1a","23",{}]
+13:["$","meta",null,{"name":"next-size-adjust","content":""}]
+15:["$","$1","c",{"children":[null,["$","$L1b",null,{"parallelRouterKey":"children","template":["$","$L1c",null,{}]}]]}]
+19:true
+7:300
+7:C
+18:0
+14:"$undefined"
+16:"$undefined"
+6:"$undefined"
